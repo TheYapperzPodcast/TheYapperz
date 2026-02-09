@@ -1,0 +1,20 @@
+[
+  {
+    "category": "arab",
+    "variation": 1,
+    "question": "What is the name of the Palestinian territory bordering Egypt and Israel?",
+    "answer": "Gaza Strip."
+  },
+  {
+    "category": "islam",
+    "variation": 2,
+    "question": "What is the first chapter of the Qur'an called?",
+    "answer": "Al-Fatiha."
+  },
+  {
+    "category": "food",
+    "variation": 3,
+    "question": "What is the popular Levantine dip made from chickpeas, tahini, lemon, and garlic?",
+    "answer": "Hummus."
+  }
+]

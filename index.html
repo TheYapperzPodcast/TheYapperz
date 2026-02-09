@@ -1,0 +1,1974 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+
+  <!-- SEO -->
+  <title>The Yapperz Podcast | Adel, Saleem & Jay</title>
+  <meta name="description" content="The Yapperz is a halal, funny, and thought-provoking podcast hosted by Adel, Saleem, and Jay. Watch official episodes and take quizzes." />
+  <meta name="keywords" content="The Yapperz, TheYapperz, podcast, halal podcast, Muslim podcast, Adel, Saleem, Jay, YouTube podcast" />
+  <meta name="robots" content="index,follow" />
+  <meta name="theme-color" content="#ff7a00" />
+
+  <!-- iOS Add to Home Screen -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="TheYapperz">
+  <link rel="apple-touch-icon" href="TheYapperzLogo.png">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="The Yapperz Podcast | Adel, Saleem & Jay" />
+  <meta property="og:description" content="Halal, funny, and thought-provoking podcast hosted by Adel, Saleem, and Jay." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="TheYapperzLogo.png" />
+
+  <link rel="icon" href="TheYapperzLogo.png" />
+
+  <style>
+    :root{
+      --bg:#ffffff;
+      --text:#111827;
+      --muted:#6b7280;
+      --border:#e5e7eb;
+      --soft:#f8fafc;
+      --soft2:#f1f5f9;
+      --accent:#ff7a00;
+      --radius:18px;
+      --radius2:26px;
+      --max:1200px;
+      --shadow: 0 10px 30px rgba(17,24,39,0.08);
+      --shadow2: 0 18px 48px rgba(17,24,39,0.10);
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background: var(--bg);
+      color: var(--text);
+      overflow-x:hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    a{color:inherit;text-decoration:none}
+    button{font-family:inherit}
+    img{max-width:100%;display:block}
+
+    /* ===== Topbar ===== */
+    .topbar{
+      position:sticky; top:0; z-index:60;
+      background: rgba(255,255,255,0.96);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(8px);
+    }
+    .topbar-inner{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 12px 14px;
+      display:flex;
+      align-items:center;
+      gap: 12px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      min-width: 220px;
+    }
+    .logo-img{
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      object-fit: cover;
+      border: 1px solid var(--border);
+      background: #fff;
+    }
+    .brand h1{margin:0;font-size:16px;letter-spacing:.2px;line-height:1.05}
+    .brand p{margin:0;font-size:12px;color:var(--muted)}
+
+    .tabs{
+      margin: 0 auto;
+      display:flex;
+      align-items:center;
+      gap: 8px;
+      padding: 6px;
+      border-radius: 999px;
+      background: var(--soft);
+      border: 1px solid var(--border);
+    }
+    .tab{
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      color: var(--muted);
+      border: 1px solid transparent;
+      transition: 140ms ease;
+      cursor:pointer;
+      user-select:none;
+      white-space:nowrap;
+      background: transparent;
+    }
+    .tab:hover{background: var(--soft2); color: var(--text); border-color: var(--border);}
+    .tab.active{background: var(--accent); color:#fff; border-color: var(--accent);}
+
+    .actions{
+      min-width: 220px;
+      display:flex;
+      justify-content:flex-end;
+      gap: 10px;
+      flex-wrap:wrap;
+    }
+    .pill{
+      padding: 10px 12px;
+      border-radius: 999px;
+      background: #fff;
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-size: 13px;
+      transition: 140ms ease;
+      white-space:nowrap;
+    }
+    .pill:hover{background: var(--soft); transform: translateY(-1px);}
+
+    /* Hamburger (mobile) */
+    .hamburger{
+      display:none;
+      width: 42px;height: 42px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: #fff;
+      cursor:pointer;
+      transition: 140ms ease;
+      align-items:center;
+      justify-content:center;
+      gap: 4px;
+      flex-direction:column;
+    }
+    .hamburger:hover{background: var(--soft)}
+    .hamburger span{
+      width: 18px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 999px;
+      display:block;
+    }
+
+    @media (max-width: 980px){
+      .tabs{display:none;}
+      .actions{display:none;}
+      .hamburger{display:flex;}
+      .brand{min-width:auto;}
+    }
+
+    /* Mobile Drawer */
+    .drawer-overlay{
+      position:fixed; inset:0;
+      background: rgba(0,0,0,0.45);
+      display:none;
+      z-index:80;
+    }
+    .drawer-overlay.open{display:block;}
+    .drawer{
+      position:fixed;
+      top: 0; right: 0;
+      height: 100%;
+      width: min(360px, 92vw);
+      background:#fff;
+      border-left:1px solid var(--border);
+      box-shadow: var(--shadow2);
+      transform: translateX(110%);
+      transition: 200ms ease;
+      z-index:90;
+      display:flex;
+      flex-direction:column;
+    }
+    .drawer.open{transform: translateX(0);}
+    .drawer-top{
+      padding: 14px;
+      border-bottom: 1px solid var(--border);
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap: 10px;
+      background: var(--soft);
+    }
+    .drawer-top b{font-size: 14px;}
+    .drawer-close{
+      width: 42px;height:42px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background:#fff;
+      cursor:pointer;
+      font-weight: 900;
+    }
+    .drawer-close:hover{background: var(--soft)}
+    .drawer-body{
+      padding: 14px;
+      display:grid;
+      gap: 12px;
+      overflow:auto;
+    }
+    .drawer-nav{
+      display:grid;
+      gap: 8px;
+    }
+    .drawer-nav button{
+      text-align:left;
+      padding: 12px 12px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background:#fff;
+      cursor:pointer;
+      font-weight: 800;
+    }
+    .drawer-nav button:hover{background: var(--soft)}
+    .drawer-links{
+      display:flex;
+      flex-wrap:wrap;
+      gap: 10px;
+    }
+
+    /* ===== Layout ===== */
+    .wrap{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 18px;
+      padding-bottom: 40px;
+    }
+    .page{display:none}
+    .page.active{display:block}
+
+    .section{margin-top: 26px}
+    .section-title{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap: 12px;
+      margin: 0 0 12px 0;
+    }
+    .section-title h2{margin:0;font-size:18px;letter-spacing:.2px}
+    .hint{color: var(--muted); font-size: 13px;}
+    .kicker{color: var(--muted); font-size: 13px;}
+
+    /* ===== Hero ===== */
+    .hero{
+      border-radius: var(--radius2);
+      border: 1px solid var(--border);
+      background: #fff;
+      box-shadow: var(--shadow2);
+      overflow:hidden;
+    }
+    .hero-inner{
+      padding: 30px 22px;
+      display:grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 16px;
+      align-items: center;
+    }
+    @media (max-width: 980px){
+      .hero-inner{grid-template-columns: 1fr;}
+    }
+
+    .hero-left h3{
+      margin:0;
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1.05;
+      letter-spacing: 0.2px;
+    }
+    .hero-left p{
+      margin: 10px 0 0 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.55;
+      max-width: 720px;
+    }
+    .hero-badge{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--soft);
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+    .hero-dot{width:8px;height:8px;border-radius:999px;background: var(--accent);}
+    .hero-cta{margin-top:14px;display:flex;gap:10px;flex-wrap:wrap;align-items:center;}
+    .btn{
+      border: 1px solid transparent;
+      padding: 12px 16px;
+      border-radius: 999px;
+      cursor:pointer;
+      transition: 140ms ease;
+      font-weight: 800;
+      display:inline-flex;
+      align-items:center;
+      gap: 10px;
+    }
+    .btn-primary{background: var(--accent); color:#fff; border-color: var(--accent);}
+    .btn-primary:hover{filter: brightness(0.95)}
+    .btn-ghost{background:#fff;color:var(--text);border-color:var(--border);}
+    .btn-ghost:hover{background:var(--soft)}
+    .btn:disabled{opacity:.55; cursor:not-allowed; transform:none !important; filter:none !important;}
+
+    .hero-right{
+      border-radius: var(--radius2);
+      border: 1px solid var(--border);
+      background: var(--soft);
+      padding: 18px;
+      display:grid;
+      gap: 10px;
+      align-content: start;
+    }
+    .hero-right .mini{
+      display:flex;gap:10px;align-items:center;
+      padding: 12px;border-radius: 16px;border: 1px solid var(--border);background:#fff;
+    }
+    .mini strong{font-size: 13px}
+    .mini span{color: var(--muted); font-size: 12px}
+
+    /* ===== Featured ===== */
+    .featured-grid{display:grid;grid-template-columns: repeat(3, 1fr);gap:14px;}
+    @media (max-width: 980px){.featured-grid{grid-template-columns: 1fr;}}
+
+    .card{
+      border-radius: 22px;
+      overflow:hidden;
+      border: 1px solid var(--border);
+      background: #fff;
+      box-shadow: var(--shadow);
+      transition: 140ms ease;
+      cursor:pointer;
+    }
+    .card:hover{transform: translateY(-2px); background: var(--soft);}
+    .thumb{height:220px;position:relative;overflow:hidden;background: var(--soft);}
+    .thumb img{width:100%;height:100%;object-fit:cover;}
+    .thumb::after{
+      content:"";position:absolute; inset:0;
+      background: linear-gradient(to top, rgba(0,0,0,0.55), transparent 70%);
+      pointer-events:none;
+    }
+    .play{
+      position:absolute;left:14px;bottom:14px;
+      width:44px;height:44px;border-radius:16px;
+      background: var(--accent);
+      display:grid;place-items:center;
+      border: 1px solid rgba(255,255,255,0.55);
+      z-index:2;
+    }
+    .card-body{padding: 14px 16px 16px;}
+    .meta{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px;color:var(--muted);font-size:12px;}
+    .tag{
+      padding: 6px 10px;border-radius:999px;
+      background: rgba(255,122,0,0.12);
+      border: 1px solid rgba(255,122,0,0.25);
+      color: var(--text);
+      font-size: 12px;
+      white-space:nowrap;
+      font-weight: 900;
+    }
+    .card h4{margin:0 0 6px 0;font-size:15px;line-height:1.25;}
+    .card p{margin:0;color: var(--muted);font-size:13px;line-height:1.4;}
+
+    /* Panels */
+    .grid{display:grid;grid-template-columns:1.1fr .9fr;gap:14px}
+    @media (max-width:980px){.grid{grid-template-columns:1fr}}
+    .panel{
+      border-radius: var(--radius2);
+      border: 1px solid var(--border);
+      background: #fff;
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .panel-inner{padding:16px}
+
+    /* Inputs */
+    .field{display:grid;gap:6px}
+    label{font-size:12px;color:var(--muted)}
+    input,select{
+      width:100%;
+      padding:12px 12px;
+      border-radius:14px;
+      background:#fff;
+      border:1px solid var(--border);
+      color:var(--text);
+      outline:none;
+    }
+    input:focus,select:focus{
+      border-color: rgba(255,122,0,0.65);
+      box-shadow: 0 0 0 4px rgba(255,122,0,0.12);
+    }
+    .two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    @media (max-width:520px){.two{grid-template-columns:1fr}}
+
+    /* ===== Episodes grid ===== */
+    .season-block{
+      border-radius: var(--radius2);
+      border: 1px solid var(--border);
+      background: #fff;
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .season-head{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 10px;
+      padding: 14px 16px;
+      background: var(--soft);
+      border-bottom: 1px solid var(--border);
+    }
+    .season-head h3{margin:0;font-size:15px}
+    .season-head .count{color:var(--muted);font-size:12px}
+
+    .season-grid{
+      padding: 14px 16px 16px;
+      display:grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 12px;
+    }
+    @media (max-width: 1120px){ .season-grid{grid-template-columns: repeat(4, minmax(0,1fr));} }
+    @media (max-width: 980px){ .season-grid{grid-template-columns: repeat(3, minmax(0,1fr));} }
+    @media (max-width: 520px){ .season-grid{grid-template-columns: repeat(2, minmax(0,1fr));} }
+
+    .ep-tile{
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      background: #fff;
+      overflow:hidden;
+      box-shadow: 0 8px 22px rgba(17,24,39,0.06);
+      cursor:pointer;
+      transition: 140ms ease;
+      display:grid;
+      grid-template-rows: 120px auto;
+      min-height: 210px;
+    }
+    .ep-tile:hover{transform: translateY(-2px); background: var(--soft);}
+    .ep-tile .t{position:relative;background: var(--soft);overflow:hidden;}
+    .ep-tile .t img{width:100%;height:100%;object-fit:cover}
+    .ep-tile .t::after{
+      content:""; position:absolute; inset:0;
+      background: linear-gradient(to top, rgba(0,0,0,0.55), transparent 70%);
+    }
+    .ep-tile .p{padding: 10px 10px 12px;display:grid;gap: 8px;align-content:start;}
+    .ep-row{display:flex;align-items:flex-start;justify-content:space-between;gap: 10px;}
+    .ep-row b{font-size:13px}
+    .ep-row .miniTag{
+      padding: 5px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,122,0,0.25);
+      background: rgba(255,122,0,0.12);
+      font-size: 12px;
+      white-space: nowrap;
+      height: fit-content;
+      font-weight: 900;
+    }
+
+    /* standard + webkit line clamp */
+    .ep-title,.yt-title{
+      line-height: 1.35;
+      line-clamp: 2;
+      -webkit-line-clamp: 2;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      min-height: 34px;
+    }
+    .ep-title{font-size: 12.5px;color: var(--muted);}
+
+    .ep-tile.active{
+      border-color: rgba(255,122,0,0.65);
+      box-shadow: 0 0 0 4px rgba(255,122,0,0.12), 0 10px 30px rgba(17,24,39,0.10);
+      background: var(--soft);
+    }
+
+    /* ===== Modal ===== */
+    .modal{
+      position:fixed; inset:0;
+      background: rgba(0,0,0,0.72);
+      display:none;
+      padding: 14px;
+      z-index:100;
+    }
+    .modal.open{display:block;}
+
+    .modal-card{
+      width: min(1320px, 100%);
+      height: min(900px, 100%);
+      margin: 0 auto;
+      border-radius: 22px;
+      background:#fff;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow2);
+      overflow: hidden;
+      display:flex;
+      flex-direction:column;
+    }
+
+    .modal-top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--border);
+      background: var(--soft);
+    }
+    .modal-title{
+      font-size:14px;
+      font-weight: 900;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      white-space:nowrap;
+      min-width:0;
+      flex:1;
+    }
+    .modal-actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center;}
+    .iconbtn{
+      width: 42px;height:42px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background:#fff;
+      cursor:pointer;
+      font-weight: 900;
+      display:grid;
+      place-items:center;
+      transition:140ms ease;
+    }
+    .iconbtn:hover{background: var(--soft2)}
+    .xbtn{
+      border:1px solid var(--border);
+      border-radius:999px;
+      padding:10px 12px;
+      cursor:pointer;
+      background:#fff;
+      transition:140ms ease;
+      font-weight:900;
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+    }
+    .xbtn:hover{background:var(--soft2)}
+    .xbtn.primary{
+      background: var(--accent);
+      border-color: var(--accent);
+      color:#fff;
+    }
+    .xbtn.primary:hover{filter: brightness(0.95)}
+
+    .modal-body{
+      flex:1;
+      min-height:0;
+      display:grid;
+      grid-template-columns: 1fr 420px;
+    }
+    @media (max-width: 980px){
+      .modal{padding: 0;}
+      .modal-card{
+        height: 100%;
+        border-radius: 0;
+      }
+      .modal-body{
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Left column: player + panel */
+    .player-wrap{
+      background:#fff;
+      padding: 12px;
+      min-height:0;
+      display:flex;
+      flex-direction:column;
+      gap: 12px;
+      overflow:auto;
+    }
+    @media (max-width: 980px){
+      .player-wrap{padding: 10px;}
+    }
+
+    .player-shell{
+      position:relative;
+      width:100%;
+      border-radius: 18px;
+      overflow:hidden;
+      background:#000;
+      border: 1px solid rgba(0,0,0,0.10);
+    }
+    .player-shell::before{
+      content:"";
+      display:block;
+      padding-top: 56.25%;
+    }
+    .player{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      border:0;
+      display:block;
+      background:#000;
+    }
+
+    /* Watch panel */
+    .watch-panel{
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      background: #fff;
+      box-shadow: 0 10px 26px rgba(17,24,39,0.06);
+      overflow:hidden;
+    }
+    .watch-top{
+      padding: 12px 14px;
+      background: linear-gradient(180deg, var(--soft) 0%, #fff 100%);
+      border-bottom: 1px solid var(--border);
+      display:grid;
+      gap: 10px;
+    }
+    .watch-title{
+      display:flex;
+      flex-direction:column;
+      gap: 8px;
+    }
+    .watch-title h3{
+      margin:0;
+      font-size: 16px;
+      line-height: 1.25;
+      letter-spacing: .1px;
+    }
+
+    .chips{
+      display:flex;
+      gap: 8px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+    .chipx{
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background:#fff;
+      font-size: 12px;
+      color: var(--muted);
+      display:inline-flex;
+      gap: 8px;
+      align-items:center;
+      white-space:nowrap;
+    }
+    .chipx .dot{width:8px;height:8px;border-radius:999px;background: var(--accent);}
+    .chipx b{color: var(--text); font-weight: 900;}
+
+    /* ✅ action bar fixed: consistent across episodes */
+    .actionbar{
+      display:flex;
+      gap: 10px;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:space-between;
+    }
+    .actionbar-left{
+      display:flex;
+      gap: 10px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+    .actionbar-right{
+      display:flex;
+      gap: 10px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+
+    .abtn{
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background:#fff;
+      cursor:pointer;
+      transition:140ms ease;
+      font-weight:900;
+      font-size: 12.5px;
+      display:inline-flex;
+      gap: 8px;
+      align-items:center;
+      white-space:nowrap;
+      min-height: 40px;
+    }
+    .abtn:hover{background: var(--soft); transform: translateY(-1px);}
+    .abtn:disabled{opacity:.55;cursor:not-allowed;transform:none;}
+    .abtn.primary{
+      background: var(--accent);
+      border-color: var(--accent);
+      color:#fff;
+    }
+    .abtn.primary:hover{filter: brightness(0.95); transform:none;}
+
+    .watch-bottom{
+      padding: 12px 14px 14px;
+      display:grid;
+      gap: 10px;
+    }
+    .toggle{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      background:#fff;
+    }
+    .toggle span{font-size: 13px; color: var(--muted);}
+    .switch{
+      width: 46px;
+      height: 26px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--soft);
+      position:relative;
+      cursor:pointer;
+      flex-shrink:0;
+    }
+    .switch::after{
+      content:"";
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      background:#fff;
+      border: 1px solid var(--border);
+      position:absolute;
+      top: 1px;
+      left: 1px;
+      transition: 140ms ease;
+    }
+    .switch.on{
+      background: rgba(255,122,0,0.18);
+      border-color: rgba(255,122,0,0.35);
+    }
+    .switch.on::after{
+      left: 21px;
+      border-color: rgba(255,122,0,0.35);
+    }
+
+    .toast2{
+      display:none;
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background:#fff;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .toast2.show{display:block;}
+
+    .info-grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    @media (max-width: 780px){
+      .info-grid{grid-template-columns:1fr;}
+    }
+    .info-card{
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      background: var(--soft);
+      padding: 12px;
+      display:grid;
+      gap: 6px;
+    }
+    .info-card b{font-size: 13px;}
+    .info-card p{margin:0;color: var(--muted);font-size: 13px;line-height:1.55;}
+
+    /* Right column */
+    .side{
+      border-left:1px solid var(--border);
+      background:#fff;
+      min-height:0;
+      display:flex;
+      flex-direction:column;
+    }
+    @media (max-width:980px){
+      .side{
+        border-left:none;
+        border-top:1px solid var(--border);
+      }
+    }
+
+    .side-head{
+      padding: 12px;
+      border-bottom: 1px solid var(--border);
+      background: #fff;
+      display:flex;
+      flex-direction:column;
+      gap: 10px;
+    }
+    .side-head-row{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+    }
+    .side-head-row b{font-size:13px}
+    .side-head-row span{font-size:12px;color:var(--muted)}
+
+    .side-search{
+      display:flex;
+      gap: 10px;
+      align-items:center;
+      padding: 10px 12px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      background: var(--soft);
+    }
+    .side-search input{
+      border:0;
+      outline:none;
+      background:transparent;
+      padding:0;
+      width:100%;
+      color:var(--text);
+      font-size: 13px;
+    }
+
+    .side-scroll{
+      flex:1;
+      min-height:0;
+      overflow:auto;
+      padding: 12px;
+      display:grid;
+      gap: 10px;
+      background:#fff;
+    }
+
+    /* ✅ FIXED STACK: grid row, no squishing, no “strip thumbnails” */
+    .side-item{
+      display:grid;
+      grid-template-columns: 120px 1fr;
+      gap: 12px;
+      padding: 10px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      background:#fff;
+      cursor:pointer;
+      transition:140ms ease;
+      align-items:center;
+      overflow:hidden;
+      min-height: 92px;
+    }
+    .side-item:hover{transform: translateY(-1px); background: var(--soft);}
+    .side-item.active{
+      border-color: rgba(255,122,0,0.55);
+      box-shadow: 0 0 0 4px rgba(255,122,0,0.12);
+      background: var(--soft);
+    }
+
+    .side-thumb{
+      width: 120px;
+      height: 68px; /* true 16:9 */
+      border-radius: 14px;
+      overflow:hidden;
+      background:#000;
+      border: 1px solid rgba(0,0,0,0.10);
+      position:relative;
+    }
+    .side-thumb img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+    .badge-ep{
+      position:absolute;
+      left: 6px;
+      top: 6px;
+      padding: 5px 8px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.92);
+      border: 1px solid rgba(0,0,0,0.10);
+      font-size: 11px;
+      font-weight: 900;
+      color: var(--text);
+      backdrop-filter: blur(6px);
+    }
+
+    .side-meta{
+      min-width:0;
+      display:flex;
+      flex-direction:column;
+      gap: 6px;
+      justify-content:center;
+    }
+    .yt-title{
+      font-size: 13px;
+      font-weight: 900;
+      line-height: 1.25;
+      color: var(--text);
+    }
+    .side-sub{
+      font-size: 12px;
+      color: var(--muted);
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    /* Footer */
+    footer{border-top:1px solid var(--border);background:#fff;padding:22px 18px 34px;}
+    .footer-inner{
+      max-width:var(--max);margin:0 auto;
+      display:flex;align-items:flex-start;justify-content:space-between;gap:14px;flex-wrap:wrap;
+      color:var(--muted);font-size:13px;
+    }
+    .footer-links{display:flex;gap:12px;flex-wrap:wrap}
+    .footer-links a{
+      padding:8px 10px;border-radius:999px;border:1px solid var(--border);
+      background:var(--soft);transition:140ms ease;
+    }
+    .footer-links a:hover{background:var(--soft2);transform:translateY(-1px)}
+
+    /* Quizzes (kept) */
+    .quiz-layout{display:grid;grid-template-columns: 1.25fr 0.75fr;gap: 14px;align-items: start;}
+    @media (max-width: 980px){.quiz-layout{grid-template-columns:1fr;}}
+    .quiz-hero{border-radius: var(--radius2);border: 1px solid var(--border);background: linear-gradient(180deg, #fff 0%, var(--soft) 100%);box-shadow: var(--shadow2);overflow:hidden;}
+    .quiz-hero-inner{padding: 18px;display:grid;gap: 12px;}
+    .quiz-headline{display:flex;align-items:flex-start;justify-content:space-between;gap: 12px;flex-wrap:wrap;}
+    .quiz-headline h3{margin:0;font-size: 20px;letter-spacing:.2px;}
+    .quiz-sub{margin:6px 0 0 0;color: var(--muted);line-height:1.6;font-size: 14px;}
+    .quiz-card{border-radius: 22px;border: 1px solid var(--border);background:#fff;box-shadow: var(--shadow);overflow:hidden;}
+    .quiz-card-top{padding: 14px 16px;border-bottom: 1px solid var(--border);background: var(--soft);display:flex;align-items:center;justify-content:space-between;gap: 10px;flex-wrap:wrap;}
+    .quiz-badges{display:flex;gap: 8px;flex-wrap:wrap;align-items:center;}
+    .badge{padding: 7px 10px;border-radius: 999px;border: 1px solid var(--border);background:#fff;font-size: 12px;color: var(--muted);display:inline-flex;gap: 8px;align-items:center;white-space:nowrap;}
+    .badge .dot{width:8px;height:8px;border-radius:999px;background: var(--accent);}
+    .badge strong{color: var(--text); font-weight:900;}
+    .quiz-card-body{padding: 16px;display:grid;gap: 12px;}
+    .quiz-question{border-radius: 18px;border: 1px solid var(--border);background: #fff;padding: 16px;line-height: 1.55;}
+    .quiz-question .q{margin:0;font-size: 16px;font-weight: 900;letter-spacing: .1px;}
+    .quiz-answer{border-radius: 18px;border: 1px solid rgba(255,122,0,0.25);background: rgba(255,122,0,0.10);padding: 14px 16px;display:none;line-height:1.55;}
+    .quiz-answer.show{display:block;}
+    .quiz-answer .label{font-size: 12px;color: var(--muted);margin-bottom: 6px;}
+    .quiz-answer .a{margin:0;font-size: 15px;font-weight: 900;color: var(--text);}
+    .quiz-controls{display:flex;gap: 10px;flex-wrap:wrap;align-items:center;}
+    .quiz-side{display:grid;gap: 14px;}
+    .chip-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px;}
+    .chip{padding: 10px 12px;border-radius: 999px;border: 1px solid var(--border);background: #fff;font-size: 13px;color: var(--muted);transition:140ms ease;cursor:pointer;user-select:none;white-space:nowrap;}
+    .chip:hover{background:var(--soft); transform: translateY(-1px);}
+    .chip.active{background: var(--accent);border-color: var(--accent);color:#fff;}
+    .quiz-mini{border-radius: 18px;border: 1px solid var(--border);background: var(--soft);padding: 12px;color: var(--muted);line-height:1.6;font-size: 13px;}
+    .toast{display:none;padding: 10px 12px;border-radius: 14px;border: 1px solid var(--border);background:#fff;color: var(--muted);font-size: 13px;}
+    .toast.show{display:block;}
+
+    /* Small install banner */
+    .install-banner{
+      position: fixed;
+      left: 14px;
+      right: 14px;
+      bottom: 14px;
+      z-index: 70;
+      display:none;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(8px);
+      border-radius: 18px;
+      box-shadow: var(--shadow2);
+      padding: 12px;
+      gap: 10px;
+      align-items:center;
+      justify-content:space-between;
+    }
+    .install-banner.open{display:flex;}
+    .install-banner b{font-size: 13px;}
+    .install-banner .mini{color: var(--muted); font-size: 12px;}
+    .install-actions{display:flex; gap:10px; flex-wrap:wrap;}
+    .install-actions button{
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background:#fff;
+      cursor:pointer;
+      font-weight: 900;
+    }
+    .install-actions button.primary{
+      background: var(--accent);
+      border-color: var(--accent);
+      color:#fff;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <div class="topbar-inner">
+      <button class="hamburger" id="hamburger" aria-label="Open menu" type="button">
+        <span></span><span></span><span></span>
+      </button>
+
+      <div class="brand">
+        <img class="logo-img" src="TheYapperzLogo.png" alt="The Yapperz Logo" />
+        <div>
+          <h1>The Yapperz</h1>
+          <p>Adel, Saleem and Jay</p>
+        </div>
+      </div>
+
+      <nav class="tabs" aria-label="Primary Navigation">
+        <button class="tab active" data-page="home" type="button">Home</button>
+        <button class="tab" data-page="episodes" type="button">Episodes</button>
+        <button class="tab" data-page="quizzes" type="button">Quizzes</button>
+        <button class="tab" data-page="partners" type="button">Partners and Sponsors</button>
+      </nav>
+
+      <div class="actions">
+        <a class="pill" href="https://www.youtube.com/@theyapperzpodcast/videos" target="_blank" rel="noopener">YouTube</a>
+        <a class="pill" href="https://x.com/theyapperz" target="_blank" rel="noopener">X</a>
+        <a class="pill" href="https://www.instagram.com/theyapperz/" target="_blank" rel="noopener">Instagram</a>
+        <a class="pill" href="https://www.tiktok.com/@theyapperz?lang=en" target="_blank" rel="noopener">TikTok</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- MOBILE DRAWER -->
+  <div class="drawer-overlay" id="drawerOverlay" aria-hidden="true"></div>
+  <aside class="drawer" id="drawer" aria-label="Mobile menu">
+    <div class="drawer-top">
+      <b>Menu</b>
+      <button class="drawer-close" id="drawerClose" type="button" aria-label="Close menu">✕</button>
+    </div>
+    <div class="drawer-body">
+      <div class="drawer-nav">
+        <button type="button" data-dpage="home">Home</button>
+        <button type="button" data-dpage="episodes">Episodes</button>
+        <button type="button" data-dpage="quizzes">Quizzes</button>
+        <button type="button" data-dpage="partners">Partners & Sponsors</button>
+      </div>
+      <div class="drawer-links">
+        <a class="pill" href="https://www.youtube.com/@theyapperzpodcast/videos" target="_blank" rel="noopener">YouTube</a>
+        <a class="pill" href="https://x.com/theyapperz" target="_blank" rel="noopener">X</a>
+        <a class="pill" href="https://www.instagram.com/theyapperz/" target="_blank" rel="noopener">Instagram</a>
+        <a class="pill" href="https://www.tiktok.com/@theyapperz?lang=en" target="_blank" rel="noopener">TikTok</a>
+      </div>
+      <div class="kicker">Tip: Add to Home Screen for an app-like experience.</div>
+    </div>
+  </aside>
+
+  <main class="wrap">
+    <!-- HOME -->
+    <section class="page active" id="page-home">
+      <div class="hero">
+        <div class="hero-inner">
+          <div class="hero-left">
+            <div class="hero-badge"><span class="hero-dot"></span>THE YAPPERZ • OFFICIAL EPISODES</div>
+            <h3>Watch The Yapperz</h3>
+            <p>
+              Welcome to <b>TheYapperz</b>, a vibrant and engaging podcast that combines laughter, humility,
+              and thought-provoking discussions—all through a halal lens. Hosted by <b>Adel</b>, <b>Saleem</b>, and <b>Jay</b>.
+              Click any episode below to play instantly.
+            </p>
+
+            <div class="hero-cta">
+              <button class="btn btn-primary" id="btnPlayFeatured" type="button">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M9 7v10l8-5-8-5Z" fill="#fff"/>
+                </svg>
+                Play Latest Episode
+              </button>
+              <button class="btn btn-ghost" data-go="episodes" type="button">Browse Seasons</button>
+              <button class="btn btn-ghost" data-go="quizzes" type="button">Try Quizzes</button>
+            </div>
+
+            <div class="kicker" style="margin-top:10px;">Official videos only • Clean orange & white design</div>
+          </div>
+
+          <div class="hero-right">
+            <div class="mini">
+              <div style="width:38px;height:38px;border-radius:14px;background:rgba(255,122,0,0.14);border:1px solid rgba(255,122,0,0.25);display:grid;place-items:center;font-weight:900;">🎥</div>
+              <div><strong>Watch</strong><br><span>Full episodes on-site</span></div>
+            </div>
+            <div class="mini">
+              <div style="width:38px;height:38px;border-radius:14px;background:rgba(255,122,0,0.14);border:1px solid rgba(255,122,0,0.25);display:grid;place-items:center;font-weight:900;">🧠</div>
+              <div><strong>Play</strong><br><span>Quizzes & trivia</span></div>
+            </div>
+            <div class="mini">
+              <div style="width:38px;height:38px;border-radius:14px;background:rgba(255,122,0,0.14);border:1px solid rgba(255,122,0,0.25);display:grid;place-items:center;font-weight:900;">🔥</div>
+              <div><strong>Community</strong><br><span>Follow on socials</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">
+          <h2>Featured Episodes</h2>
+          <div class="hint">Top 3 latest uploads</div>
+        </div>
+        <div class="featured-grid" id="featuredRow"></div>
+      </div>
+    </section>
+
+    <!-- EPISODES -->
+    <section class="page" id="page-episodes">
+      <div class="section-title">
+        <h2>Episodes</h2>
+        <div class="hint">Click any episode to play</div>
+      </div>
+
+      <div class="grid">
+        <div class="panel">
+          <div class="panel-inner">
+            <div class="two">
+              <div class="field">
+                <label for="seasonFilter">Season</label>
+                <select id="seasonFilter">
+                  <option value="all">All</option>
+                  <option value="1">Season 1</option>
+                  <option value="2">Season 2</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="search">Search</label>
+                <input id="search" placeholder="Search by season/episode or title..." />
+              </div>
+            </div>
+            <p class="kicker" style="margin:10px 0 0;">Titles auto-load from YouTube.</p>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-inner">
+            <h3 style="margin:0 0 8px 0;font-size:16px;">Now Playing</h3>
+            <div id="nowPlaying" class="kicker">Select an episode to start playback.</div>
+            <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap;">
+              <button class="btn btn-primary" id="btnPlay" type="button">Play</button>
+              <a class="btn btn-ghost" id="btnOpenYT" href="#" target="_blank" rel="noopener">Open on YouTube</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:14px;" id="seasonGrids"></div>
+    </section>
+
+    <!-- QUIZZES -->
+    <section class="page" id="page-quizzes">
+      <div class="section-title">
+        <h2>Quizzes</h2>
+        <div class="hint">Tap “Get Random Question” and test yourself</div>
+      </div>
+
+      <div class="quiz-layout">
+        <div class="quiz-hero">
+          <div class="quiz-hero-inner">
+            <div class="quiz-headline">
+              <div>
+                <h3>Test Your Knowledge</h3>
+                <p class="quiz-sub">Click the button below to get a randomized question and challenge yourself!</p>
+              </div>
+              <div class="toast" id="quizToast" aria-live="polite"></div>
+            </div>
+
+            <div class="quiz-card">
+              <div class="quiz-card-top">
+                <div class="quiz-badges">
+                  <span class="badge"><span class="dot"></span><strong id="quizCategory">All</strong></span>
+                  <span class="badge">Variation <strong id="quizVariation">—</strong></span>
+                </div>
+
+                <div class="quiz-controls">
+                  <button class="btn btn-primary" id="btnQuizRandom" type="button">Get Random Question</button>
+                  <button class="btn btn-ghost" id="btnQuizShow" type="button" disabled>Show Answer</button>
+                </div>
+              </div>
+
+              <div class="quiz-card-body">
+                <div class="quiz-question">
+                  <p class="q" id="quizQText">Press “Get Random Question” to start.</p>
+                </div>
+
+                <div class="quiz-answer" id="quizAnswerBox">
+                  <div class="label">Answer</div>
+                  <p class="a" id="quizAText">—</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="quiz-side">
+          <div class="panel">
+            <div class="panel-inner">
+              <h3>Pick a Topic</h3>
+              <p class="kicker" style="margin:0;line-height:1.6;">Choose a category to get questions from that topic only.</p>
+
+              <div class="chip-row" style="margin-top:12px;">
+                <div class="chip active" data-quizcat="all">All</div>
+                <div class="chip" data-quizcat="islam">Islam</div>
+                <div class="chip" data-quizcat="arab">Arab</div>
+                <div class="chip" data-quizcat="food">Food</div>
+              </div>
+
+              <div class="quiz-mini" style="margin-top:12px;">
+                Tip: Keep clicking “Get Random Question” until you find a hard one 😈
+              </div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-inner">
+              <h3>Quick Controls</h3>
+              <p class="kicker" style="margin:0;line-height:1.6;">Keyboard: <b>R</b> = random, <b>A</b> = answer</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PARTNERS -->
+    <section class="page" id="page-partners">
+      <div class="section-title">
+        <h2>Our Partners & Sponsors</h2>
+        <div class="hint">Support TheYapperz</div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-inner">
+          <h3 style="margin:0 0 6px 0;">Our Partners & Sponsors</h3>
+          <p class="kicker" style="margin:0;line-height:1.6;">
+            We currently do not have any partners. Interested in becoming a sponsor? Email: <b>theyapperz@gmail.com</b>
+          </p>
+          <div style="margin-top:12px;">
+            <a class="btn btn-primary" href="mailto:theyapperz@gmail.com?subject=Sponsorship%20Inquiry%20-%20The%20Yapperz">Email</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        © <span id="year"></span> The Yapperz<br />
+        <span class="kicker">Hosted by Adel, Saleem and Jay</span>
+      </div>
+      <div class="footer-links">
+        <a href="https://x.com/theyapperz" target="_blank" rel="noopener">X</a>
+        <a href="https://www.instagram.com/theyapperz/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.youtube.com/@theyapperzpodcast/videos" target="_blank" rel="noopener">YouTube</a>
+        <a href="https://www.tiktok.com/@theyapperz?lang=en" target="_blank" rel="noopener">TikTok</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- PLAYER MODAL -->
+  <div class="modal" id="playerModal" aria-hidden="true">
+    <div class="modal-card" role="dialog" aria-modal="true" aria-label="Video player">
+      <div class="modal-top">
+        <div class="modal-title" id="modalTitle">Playing…</div>
+        <div class="modal-actions">
+          <a class="xbtn primary" id="modalOpenYT" href="#" target="_blank" rel="noopener">▶ YouTube</a>
+          <button class="iconbtn" id="modalClose" type="button" aria-label="Close popup">✕</button>
+        </div>
+      </div>
+
+      <div class="modal-body">
+        <!-- LEFT -->
+        <div class="player-wrap">
+          <div class="player-shell">
+            <iframe id="playerFrame" class="player" src="" title="YouTube video player"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen></iframe>
+          </div>
+
+          <div class="watch-panel">
+            <div class="watch-top">
+              <div class="watch-title">
+                <h3 id="watchTitle">—</h3>
+                <div class="chips">
+                  <span class="chipx"><span class="dot"></span><b id="watchSE">S1 • Ep 1</b></span>
+                  <span class="chipx">Channel <b>TheYapperz</b></span>
+                  <span class="chipx">Official <b>Episode</b></span>
+                </div>
+              </div>
+
+              <!-- ✅ unified action bar -->
+              <div class="actionbar">
+                <div class="actionbar-left">
+                  <button class="abtn" id="btnPrev" type="button">⬅ Prev</button>
+                  <button class="abtn" id="btnNext" type="button">Next ➡</button>
+                  <button class="abtn" id="btnShuffle" type="button">🎲 Shuffle</button>
+                  <button class="abtn" id="btnCopy" type="button">🔗 Copy link</button>
+                </div>
+                <div class="actionbar-right">
+                  <a class="abtn primary" id="btnYT" href="#" target="_blank" rel="noopener">▶ Open on YouTube</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="watch-bottom">
+              <div class="toggle">
+                <span>Autoplay next (for the Next button)</span>
+                <div class="switch on" id="autoSwitch" role="switch" aria-checked="true" tabindex="0"></div>
+              </div>
+
+              <div class="toast2" id="copyToast" aria-live="polite"></div>
+
+              <div class="info-grid">
+                <div class="info-card">
+                  <b>Quick tip</b>
+                  <p>Use <b>N</b> for next, <b>P</b> for previous, and <b>/</b> to search episodes.</p>
+                </div>
+                <div class="info-card">
+                  <b>Bookmark app mode</b>
+                  <p>Add to Home Screen for an app-like experience. We’ll show a prompt when supported.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT -->
+        <aside class="side" aria-label="Episode list">
+          <div class="side-head">
+            <div class="side-head-row">
+              <b>Up next</b>
+              <span>Tap to play</span>
+            </div>
+            <div class="side-search">
+              🔎
+              <input id="sideSearch" placeholder="Search episodes…" />
+            </div>
+          </div>
+
+          <div class="side-scroll" id="sideList"></div>
+        </aside>
+      </div>
+    </div>
+  </div>
+
+  <!-- INSTALL BANNER -->
+  <div class="install-banner" id="installBanner" role="dialog" aria-label="Install app prompt">
+    <div>
+      <b>Install TheYapperz</b>
+      <div class="mini">Add to your home screen for a fast, app-like experience.</div>
+    </div>
+    <div class="install-actions">
+      <button id="installLater" type="button">Later</button>
+      <button class="primary" id="installNow" type="button">Install</button>
+    </div>
+  </div>
+
+  <script>
+    function getVideoId(url){
+      try{
+        const u = new URL(url);
+        if (u.hostname.includes("youtu.be")) return u.pathname.replace("/", "").trim();
+        const v = u.searchParams.get("v");
+        return v ? v.trim() : "";
+      }catch{ return ""; }
+    }
+
+    const EPISODES = [
+      { season: 1, ep: 1, url: "https://www.youtube.com/watch?v=D-8b0r7XdME&pp=0gcJCZEKAYcqIYzv" },
+      { season: 1, ep: 2, url: "https://www.youtube.com/watch?v=3vwbjsKl7fw" },
+      { season: 1, ep: 3, url: "https://www.youtube.com/watch?v=o1zIXa3nhe8" },
+      { season: 1, ep: 4, url: "https://www.youtube.com/watch?v=jgVgcrB0dhA" },
+      { season: 1, ep: 5, url: "https://www.youtube.com/watch?v=RolyIlCRLPw" },
+      { season: 1, ep: 6, url: "https://www.youtube.com/watch?v=VYkHCXwvtdw" },
+      { season: 1, ep: 7, url: "https://www.youtube.com/watch?v=u5r2vMxauhw" },
+      { season: 1, ep: 8, url: "https://www.youtube.com/watch?v=he334JFXdzg" },
+      { season: 1, ep: 9, url: "https://www.youtube.com/watch?v=-dLb4l-w08M" },
+      { season: 1, ep: 10, url: "https://www.youtube.com/watch?v=lVBwlZNJXkY" },
+      { season: 1, ep: 11, url: "https://www.youtube.com/watch?v=-ILv9fPpL80" },
+      { season: 1, ep: 12, url: "https://www.youtube.com/watch?v=WMzdAm2rg8M" },
+      { season: 1, ep: 13, url: "https://www.youtube.com/watch?v=EILyQnYqX-A" },
+      { season: 1, ep: 14, url: "https://www.youtube.com/watch?v=lpkgmUc82Hg" },
+      { season: 1, ep: 15, url: "https://www.youtube.com/watch?v=Dj42KtLvFUM&pp=0gcJCZEKAYcqIYzv" },
+      { season: 1, ep: 16, url: "https://www.youtube.com/watch?v=tqWXHbBiAVs" },
+      { season: 2, ep: 17, url: "https://www.youtube.com/watch?v=4MNffNHf5EA" },
+      { season: 2, ep: 18, url: "https://www.youtube.com/watch?v=ee7fekMyLJ8" },
+      { season: 2, ep: 19, url: "https://www.youtube.com/watch?v=idKUedPiMWg" }
+    ].map(x => ({ ...x, id: getVideoId(x.url), title: "" }));
+
+    const ORDERED = EPISODES.slice().sort((a,b)=> (a.season-b.season) || (a.ep-b.ep));
+
+    // Pages
+    const tabs = document.querySelectorAll(".tab");
+    const pages = {
+      home: document.getElementById("page-home"),
+      episodes: document.getElementById("page-episodes"),
+      quizzes: document.getElementById("page-quizzes"),
+      partners: document.getElementById("page-partners")
+    };
+    function setActivePage(key){
+      tabs.forEach(t => t.classList.toggle("active", t.dataset.page === key));
+      Object.keys(pages).forEach(k => pages[k].classList.toggle("active", k === key));
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      closeDrawer();
+    }
+    tabs.forEach(t => t.addEventListener("click", () => setActivePage(t.dataset.page)));
+    document.querySelectorAll("[data-go]").forEach(btn => btn.addEventListener("click", () => setActivePage(btn.dataset.go)));
+
+    // Drawer
+    const hamburger = document.getElementById("hamburger");
+    const drawer = document.getElementById("drawer");
+    const drawerOverlay = document.getElementById("drawerOverlay");
+    const drawerClose = document.getElementById("drawerClose");
+    function openDrawer(){
+      drawer.classList.add("open");
+      drawerOverlay.classList.add("open");
+      drawerOverlay.setAttribute("aria-hidden","false");
+      document.body.style.overflow = "hidden";
+    }
+    function closeDrawer(){
+      drawer.classList.remove("open");
+      drawerOverlay.classList.remove("open");
+      drawerOverlay.setAttribute("aria-hidden","true");
+      document.body.style.overflow = "";
+    }
+    hamburger?.addEventListener("click", openDrawer);
+    drawerClose?.addEventListener("click", closeDrawer);
+    drawerOverlay?.addEventListener("click", closeDrawer);
+    document.querySelectorAll("[data-dpage]").forEach(b => b.addEventListener("click", () => setActivePage(b.dataset.dpage)));
+
+    // Modal + refs
+    const playerModal = document.getElementById("playerModal");
+    const playerFrame = document.getElementById("playerFrame");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalClose = document.getElementById("modalClose");
+    const modalOpenYT = document.getElementById("modalOpenYT");
+
+    const sideList = document.getElementById("sideList");
+    const sideSearch = document.getElementById("sideSearch");
+
+    const watchTitle = document.getElementById("watchTitle");
+    const watchSE = document.getElementById("watchSE");
+    const btnPrev = document.getElementById("btnPrev");
+    const btnNext = document.getElementById("btnNext");
+    const btnShuffle = document.getElementById("btnShuffle");
+    const btnCopy = document.getElementById("btnCopy");
+    const btnYT = document.getElementById("btnYT");
+    const copyToast = document.getElementById("copyToast");
+    const autoSwitch = document.getElementById("autoSwitch");
+
+    let currentEpisode = null;
+    let autoplayNext = true;
+
+    function escapeHtml(str){
+      return String(str)
+        .replaceAll("&","&amp;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;")
+        .replaceAll("'","&#039;");
+    }
+    function ytThumb(id){ return `https://i.ytimg.com/vi/${id}/hqdefault.jpg`; }
+
+    function toast2(msg){
+      if(!msg) return;
+      copyToast.textContent = msg;
+      copyToast.classList.add("show");
+      window.clearTimeout(toast2._t);
+      toast2._t = window.setTimeout(() => copyToast.classList.remove("show"), 2200);
+    }
+
+    function getIndex(ep){
+      return ORDERED.findIndex(x => x.season===ep.season && x.ep===ep.ep);
+    }
+    function getNext(ep){
+      const i = getIndex(ep);
+      if(i < 0) return null;
+      return ORDERED[i+1] || null;
+    }
+    function getPrev(ep){
+      const i = getIndex(ep);
+      if(i < 0) return null;
+      return ORDERED[i-1] || null;
+    }
+
+    function setWatchPanel(ep){
+      const title = ep.title || `Season ${ep.season} • Episode ${ep.ep}`;
+      watchTitle.textContent = title;
+      watchSE.textContent = `S${ep.season} • Ep ${ep.ep}`;
+
+      btnYT.href = ep.url;
+      modalOpenYT.href = ep.url;
+
+      const p = getPrev(ep);
+      const n = getNext(ep);
+      btnPrev.disabled = !p;
+      btnNext.disabled = !n;
+
+      modalTitle.textContent = `Season ${ep.season} • Episode ${ep.ep}${ep.title ? " • " + ep.title : ""}`;
+    }
+
+    function highlightSelected(epObj){
+      const key = `${epObj.season}-${epObj.ep}`;
+      document.querySelectorAll(".ep-tile").forEach(el => el.classList.toggle("active", el.dataset.key === key));
+      document.querySelectorAll(".side-item").forEach(el => el.classList.toggle("active", el.dataset.key === key));
+    }
+
+    function renderSideList(){
+      const q = (sideSearch?.value || "").trim().toLowerCase();
+      const list = ORDERED.filter(ep => {
+        if(!q) return true;
+        const hay = `season ${ep.season} episode ${ep.ep} ${(ep.title||"")}`.toLowerCase();
+        return hay.includes(q);
+      });
+
+      sideList.innerHTML = "";
+      list.forEach(item => {
+        const row = document.createElement("div");
+        row.className = "side-item";
+        row.dataset.key = `${item.season}-${item.ep}`;
+
+        row.innerHTML = `
+          <div class="side-thumb">
+            <img alt="Thumbnail" src="${ytThumb(item.id)}" loading="lazy"/>
+            <div class="badge-ep">S${item.season} • Ep ${item.ep}</div>
+          </div>
+          <div class="side-meta">
+            <div class="yt-title">${escapeHtml(item.title || "Loading title…")}</div>
+            <div class="side-sub">TheYapperz • Official Episode</div>
+          </div>
+        `;
+        row.addEventListener("click", () => openPlayer(item, true));
+        sideList.appendChild(row);
+      });
+
+      if(currentEpisode){
+        highlightSelected(currentEpisode);
+        const active = sideList.querySelector(`.side-item[data-key="${currentEpisode.season}-${currentEpisode.ep}"]`);
+        if(active) active.scrollIntoView({ block: "nearest" });
+      }
+    }
+    sideSearch?.addEventListener("input", renderSideList);
+
+    function openPlayer(epObj, autoplay=true){
+      if(!epObj || !epObj.id) return;
+      currentEpisode = epObj;
+
+      setWatchPanel(epObj);
+
+      const auto = autoplay ? "1" : "0";
+      // Using youtube-nocookie can break some embeds on some setups; standard embed is safest for visuals.
+      playerFrame.src = `https://www.youtube.com/embed/${epObj.id}?autoplay=${auto}&rel=0&modestbranding=1&playsinline=1`;
+      renderSideList();
+      highlightSelected(epObj);
+
+      playerModal.classList.add("open");
+      playerModal.setAttribute("aria-hidden","false");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closePlayer(){
+      playerModal.classList.remove("open");
+      playerModal.setAttribute("aria-hidden","true");
+      playerFrame.src = "";
+      document.body.style.overflow = "";
+      if(sideSearch) sideSearch.value = "";
+      copyToast.classList.remove("show");
+    }
+
+    modalClose.addEventListener("click", closePlayer);
+    playerModal.addEventListener("click", (e) => { if(e.target === playerModal) closePlayer(); });
+    window.addEventListener("keydown", (e) => {
+      if(e.key === "Escape" && playerModal.classList.contains("open")) closePlayer();
+    });
+
+    // Watch panel buttons
+    btnPrev.addEventListener("click", () => {
+      if(!currentEpisode) return;
+      const p = getPrev(currentEpisode);
+      if(p) openPlayer(p, true);
+    });
+    btnNext.addEventListener("click", () => {
+      if(!currentEpisode) return;
+      const n = getNext(currentEpisode);
+      if(!n) return;
+      openPlayer(n, autoplayNext);
+    });
+    btnShuffle.addEventListener("click", () => {
+      const pool = ORDERED.slice();
+      if(!pool.length) return;
+      const pick = pool[Math.floor(Math.random() * pool.length)];
+      openPlayer(pick, true);
+    });
+    btnCopy.addEventListener("click", async () => {
+      if(!currentEpisode) return;
+      const link = currentEpisode.url;
+      try{
+        await navigator.clipboard.writeText(link);
+        toast2("Copied link ✅");
+      }catch{
+        const ta = document.createElement("textarea");
+        ta.value = link;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand("copy");
+        ta.remove();
+        toast2("Copied link ✅");
+      }
+    });
+
+    function setAutoUI(){
+      autoSwitch.classList.toggle("on", autoplayNext);
+      autoSwitch.setAttribute("aria-checked", autoplayNext ? "true" : "false");
+    }
+    function toggleAuto(){
+      autoplayNext = !autoplayNext;
+      setAutoUI();
+      toast2(autoplayNext ? "Autoplay next: ON" : "Autoplay next: OFF");
+    }
+    autoSwitch.addEventListener("click", toggleAuto);
+    autoSwitch.addEventListener("keydown", (e) => {
+      if(e.key === "Enter" || e.key === " ") { e.preventDefault(); toggleAuto(); }
+    });
+    setAutoUI();
+
+    // Keyboard shortcuts in popup
+    window.addEventListener("keydown", (e) => {
+      const modalOpen = playerModal.classList.contains("open");
+      if(!modalOpen) return;
+
+      if(e.key === "/"){
+        e.preventDefault();
+        sideSearch?.focus();
+      }
+      if(e.key.toLowerCase() === "n") btnNext.click();
+      if(e.key.toLowerCase() === "p") btnPrev.click();
+      if(e.key.toLowerCase() === "c") btnCopy.click();
+    });
+
+    /* Featured */
+    const featuredRow = document.getElementById("featuredRow");
+    const latestFirst = [...EPISODES].reverse();
+    function renderFeatured(){
+      featuredRow.innerHTML = "";
+      latestFirst.slice(0,3).forEach(ep => {
+        const card = document.createElement("article");
+        card.className = "card";
+        card.innerHTML = `
+          <div class="thumb">
+            <img alt="Season ${ep.season} Episode ${ep.ep} thumbnail" src="${ytThumb(ep.id)}" loading="lazy" />
+            <div class="play" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <path d="M10 8v8l7-4-7-4Z" fill="#fff"/>
+              </svg>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="meta"><span>Season ${ep.season}</span><span class="tag">Ep ${ep.ep}</span></div>
+            <h4 class="featuredTitle" data-key="${ep.season}-${ep.ep}">${escapeHtml(ep.title || `Episode ${ep.ep}`)}</h4>
+            <p>Click to play</p>
+          </div>
+        `;
+        card.addEventListener("click", () => {
+          setActivePage("episodes");
+          selectEpisode(ep, true);
+        });
+        featuredRow.appendChild(card);
+      });
+    }
+    renderFeatured();
+
+    document.getElementById("btnPlayFeatured").addEventListener("click", () => {
+      const latest = latestFirst[0] || EPISODES[EPISODES.length-1];
+      setActivePage("episodes");
+      selectEpisode(latest, true);
+    });
+
+    /* Episodes page */
+    const seasonFilter = document.getElementById("seasonFilter");
+    const searchInput = document.getElementById("search");
+    const seasonGrids = document.getElementById("seasonGrids");
+    const nowPlaying = document.getElementById("nowPlaying");
+    const btnOpenYT2 = document.getElementById("btnOpenYT");
+    const btnPlay = document.getElementById("btnPlay");
+
+    function selectEpisode(epObj, autoplay){
+      currentEpisode = epObj;
+      if(nowPlaying){
+        const titleLine = epObj.title ? `<div class="kicker" style="margin-top:6px;">${escapeHtml(epObj.title)}</div>` : "";
+        nowPlaying.innerHTML = `<b>Season ${epObj.season} • Episode ${epObj.ep}</b>` + titleLine;
+      }
+      if(btnOpenYT2) btnOpenYT2.href = epObj.url;
+      openPlayer(epObj, autoplay);
+    }
+
+    btnPlay.addEventListener("click", () => {
+      if(!currentEpisode){ alert("Pick an episode first."); return; }
+      openPlayer(currentEpisode, true);
+    });
+
+    function renderSeasonGrids(filteredAll){
+      seasonGrids.innerHTML = "";
+      const bySeason = filteredAll.reduce((acc, ep) => {
+        (acc[ep.season] ||= []).push(ep);
+        return acc;
+      }, {});
+      Object.keys(bySeason).map(Number).sort((a,b)=>a-b).forEach(seasonNum => {
+        const list = bySeason[seasonNum].slice().sort((a,b)=>a.ep-b.ep);
+
+        const block = document.createElement("div");
+        block.className = "season-block";
+        block.style.marginBottom = "14px";
+        block.innerHTML = `
+          <div class="season-head">
+            <h3>Season ${seasonNum}</h3>
+            <div class="count">${list.length} episode(s)</div>
+          </div>
+          <div class="season-grid" id="grid-s${seasonNum}"></div>
+        `;
+        seasonGrids.appendChild(block);
+
+        const grid = block.querySelector(`#grid-s${seasonNum}`);
+        list.forEach(ep => {
+          const tile = document.createElement("div");
+          tile.className = "ep-tile";
+          tile.dataset.key = `${ep.season}-${ep.ep}`;
+          tile.innerHTML = `
+            <div class="t">
+              <img alt="Season ${ep.season} Episode ${ep.ep} thumbnail" src="${ytThumb(ep.id)}" loading="lazy" />
+            </div>
+            <div class="p">
+              <div class="ep-row">
+                <b>Season ${ep.season} • Ep ${ep.ep}</b>
+                <span class="miniTag">S${ep.season}</span>
+              </div>
+              <div class="ep-title" data-key="${ep.season}-${ep.ep}">${escapeHtml(ep.title || "Loading title…")}</div>
+            </div>
+          `;
+          tile.addEventListener("click", () => selectEpisode(ep, true));
+          grid.appendChild(tile);
+        });
+      });
+    }
+
+    function applyFilters(){
+      const sf = seasonFilter.value;
+      const q = searchInput.value.trim().toLowerCase();
+
+      const filtered = EPISODES
+        .slice()
+        .sort((a,b)=> (a.season-b.season) || (a.ep-b.ep))
+        .filter(ep => {
+          if(sf !== "all" && Number(sf) !== ep.season) return false;
+          if(!q) return true;
+          const title = (ep.title || "").toLowerCase();
+          const hay = (`season ${ep.season} episode ${ep.ep} ${title}`).toLowerCase();
+          return hay.includes(q);
+        });
+
+      renderSeasonGrids(filtered);
+      if(currentEpisode){
+        const still = filtered.some(e => e.season===currentEpisode.season && e.ep===currentEpisode.ep);
+        if(still) highlightSelected(currentEpisode);
+      }
+    }
+    seasonFilter.addEventListener("change", applyFilters);
+    searchInput.addEventListener("input", applyFilters);
+    applyFilters();
+
+    /* Titles via oEmbed (cached) */
+    const TITLE_CACHE_KEY = "yapperz_title_cache_v6";
+    function loadTitleCache(){
+      try{ return JSON.parse(localStorage.getItem(TITLE_CACHE_KEY) || "{}"); }
+      catch{ return {}; }
+    }
+    function saveTitleCache(cache){
+      try{ localStorage.setItem(TITLE_CACHE_KEY, JSON.stringify(cache)); }catch{}
+    }
+    async function fetchTitleForEpisode(ep){
+      const cache = loadTitleCache();
+      if(cache[ep.id]){
+        ep.title = cache[ep.id];
+        return;
+      }
+      try{
+        const oembed = `https://www.youtube.com/oembed?url=${encodeURIComponent(ep.url)}&format=json`;
+        const res = await fetch(oembed);
+        if(!res.ok) throw new Error("oembed failed");
+        const data = await res.json();
+        const title = (data && data.title) ? String(data.title).trim() : "";
+        if(title){
+          ep.title = title;
+          cache[ep.id] = title;
+          saveTitleCache(cache);
+        }
+      }catch{
+        ep.title = ep.title || "";
+      }
+    }
+    function updateTitlesInDom(ep){
+      const key = `${ep.season}-${ep.ep}`;
+      document.querySelectorAll(`.ep-title[data-key="${key}"]`).forEach(el => el.textContent = ep.title || "Loading title…");
+      document.querySelectorAll(`.featuredTitle[data-key="${key}"]`).forEach(el => el.textContent = ep.title || `Episode ${ep.ep}`);
+      if(playerModal.classList.contains("open")){
+        renderSideList();
+        if(currentEpisode && currentEpisode.id === ep.id){
+          setWatchPanel(currentEpisode);
+        }
+      }
+    }
+    async function hydrateEpisodeTitles(){
+      for(const ep of EPISODES){
+        await fetchTitleForEpisode(ep);
+        updateTitlesInDom(ep);
+      }
+      renderFeatured();
+      applyFilters();
+    }
+
+    /* Quizzes */
+    const btnQuizRandom = document.getElementById("btnQuizRandom");
+    const btnQuizShow   = document.getElementById("btnQuizShow");
+    const quizCategory  = document.getElementById("quizCategory");
+    const quizVariation = document.getElementById("quizVariation");
+    const quizQText     = document.getElementById("quizQText");
+    const quizAnswerBox = document.getElementById("quizAnswerBox");
+    const quizAText     = document.getElementById("quizAText");
+    const quizToast     = document.getElementById("quizToast");
+    const chips = document.querySelectorAll(".chip");
+
+    let QUIZZES = [];
+    let currentQuiz = null;
+    let activeCategory = "all";
+
+    function toast(msg){
+      if(!msg) return;
+      quizToast.textContent = msg;
+      quizToast.classList.add("show");
+      window.clearTimeout(toast._t);
+      toast._t = window.setTimeout(() => quizToast.classList.remove("show"), 2200);
+    }
+
+    async function loadQuizzes(){
+      try{
+        const res = await fetch("quizzes.json", { cache: "no-store" });
+        if(!res.ok) throw new Error("bad status");
+        const data = await res.json();
+        const list = Array.isArray(data) ? data : (Array.isArray(data?.quizzes) ? data.quizzes : null);
+        if(!list || !list.length) throw new Error("empty");
+
+        QUIZZES = list
+          .filter(x => x && typeof x.question === "string" && typeof x.answer === "string")
+          .map(x => ({
+            question: x.question.trim(),
+            answer: x.answer.trim(),
+            category: (x.category || "general").toString().trim().toLowerCase(),
+            variation: Number.isFinite(Number(x.variation)) ? Number(x.variation) : Math.floor(Math.random()*900)+100
+          }));
+      }catch{
+        QUIZZES = [];
+      }
+    }
+
+    function poolForCategory(cat){
+      if(!QUIZZES.length) return [];
+      if(!cat || cat === "all") return QUIZZES.slice();
+      return QUIZZES.filter(q => q.category === cat);
+    }
+
+    function pickRandomQuiz(){
+      const pool = poolForCategory(activeCategory);
+      if(!pool.length) return null;
+      return pool[Math.floor(Math.random() * pool.length)];
+    }
+
+    function renderQuiz(q){
+      currentQuiz = q;
+      quizCategory.textContent = (activeCategory === "all" ? "All" : activeCategory.charAt(0).toUpperCase() + activeCategory.slice(1));
+      quizVariation.textContent = String(q.variation);
+      quizQText.textContent = q.question;
+
+      quizAText.textContent = "—";
+      quizAnswerBox.classList.remove("show");
+      btnQuizShow.disabled = false;
+    }
+
+    btnQuizRandom.addEventListener("click", () => {
+      const q = pickRandomQuiz();
+      if(!q){ toast("No questions yet. Add more in quizzes.json."); return; }
+      renderQuiz(q);
+    });
+
+    btnQuizShow.addEventListener("click", () => {
+      if(!currentQuiz) return;
+      quizAText.textContent = currentQuiz.answer;
+      quizAnswerBox.classList.add("show");
+    });
+
+    chips.forEach(ch => {
+      ch.addEventListener("click", () => {
+        chips.forEach(x => x.classList.toggle("active", x === ch));
+        activeCategory = ch.dataset.quizcat || "all";
+
+        quizCategory.textContent = (activeCategory === "all" ? "All" : activeCategory.charAt(0).toUpperCase() + activeCategory.slice(1));
+
+        currentQuiz = null;
+        quizVariation.textContent = "—";
+        quizQText.textContent = "Press “Get Random Question” to start.";
+        quizAText.textContent = "—";
+        quizAnswerBox.classList.remove("show");
+        btnQuizShow.disabled = true;
+      });
+    });
+
+    /* Footer year */
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    /* PWA-ish: inject manifest (best effort) */
+    (function injectManifest(){
+      const manifest = {
+        name: "TheYapperz",
+        short_name: "TheYapperz",
+        start_url: "./",
+        display: "standalone",
+        background_color: "#ffffff",
+        theme_color: "#ff7a00",
+        icons: [
+          { src: "TheYapperzLogo.png", sizes: "192x192", type: "image/png" },
+          { src: "TheYapperzLogo.png", sizes: "512x512", type: "image/png" }
+        ]
+      };
+      try{
+        const blob = new Blob([JSON.stringify(manifest)], { type: "application/manifest+json" });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("link");
+        link.rel = "manifest";
+        link.href = url;
+        document.head.appendChild(link);
+      }catch{}
+    })();
+
+    /* Install prompt (supported browsers) */
+    let deferredPrompt = null;
+    const installBanner = document.getElementById("installBanner");
+    const installNow = document.getElementById("installNow");
+    const installLater = document.getElementById("installLater");
+
+    window.addEventListener("beforeinstallprompt", (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      installBanner.classList.add("open");
+    });
+
+    installLater?.addEventListener("click", () => installBanner.classList.remove("open"));
+    installNow?.addEventListener("click", async () => {
+      if(!deferredPrompt) return;
+      deferredPrompt.prompt();
+      try{ await deferredPrompt.userChoice; }catch{}
+      deferredPrompt = null;
+      installBanner.classList.remove("open");
+    });
+
+    /* Start */
+    loadQuizzes();
+    hydrateEpisodeTitles();
+  </script>
+</body>
+</html>
