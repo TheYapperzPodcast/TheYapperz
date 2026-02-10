@@ -4,20 +4,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
 
-  <!-- SEO -->
   <title>The Yapperz Podcast | Adel, Saleem & Jay</title>
   <meta name="description" content="The Yapperz is a halal, funny, and thought-provoking podcast hosted by Adel, Saleem, and Jay. Watch official episodes and take quizzes." />
   <meta name="keywords" content="The Yapperz, TheYapperz, podcast, halal podcast, Muslim podcast, Adel, Saleem, Jay, YouTube podcast" />
   <meta name="robots" content="index,follow" />
   <meta name="theme-color" content="#ff7a00" />
 
-  <!-- iOS Add to Home Screen -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="apple-mobile-web-app-title" content="TheYapperz">
   <link rel="apple-touch-icon" href="TheYapperzLogo.png">
 
-  <!-- Open Graph -->
   <meta property="og:title" content="The Yapperz Podcast | Adel, Saleem & Jay" />
   <meta property="og:description" content="Halal, funny, and thought-provoking podcast hosted by Adel, Saleem, and Jay." />
   <meta property="og:type" content="website" />
@@ -56,7 +53,6 @@
     button{font-family:inherit}
     img{max-width:100%;display:block}
 
-    /* ===== Topbar ===== */
     .topbar{
       position:sticky; top:0; z-index:60;
       background: rgba(255,255,255,0.96);
@@ -132,7 +128,6 @@
     }
     .pill:hover{background: var(--soft); transform: translateY(-1px);}
 
-    /* Hamburger (mobile) */
     .hamburger{
       display:none;
       width: 42px;height: 42px;
@@ -162,7 +157,6 @@
       .brand{min-width:auto;}
     }
 
-    /* Mobile Drawer */
     .drawer-overlay{
       position:fixed; inset:0;
       background: rgba(0,0,0,0.45);
@@ -230,7 +224,6 @@
       gap: 10px;
     }
 
-    /* ===== Layout ===== */
     .wrap{
       max-width: var(--max);
       margin: 0 auto;
@@ -252,7 +245,6 @@
     .hint{color: var(--muted); font-size: 13px;}
     .kicker{color: var(--muted); font-size: 13px;}
 
-    /* ===== Hero ===== */
     .hero{
       border-radius: var(--radius2);
       border: 1px solid var(--border);
@@ -331,7 +323,6 @@
     .mini strong{font-size: 13px}
     .mini span{color: var(--muted); font-size: 12px}
 
-    /* ===== Featured ===== */
     .featured-grid{display:grid;grid-template-columns: repeat(3, 1fr);gap:14px;}
     @media (max-width: 980px){.featured-grid{grid-template-columns: 1fr;}}
 
@@ -374,7 +365,6 @@
     .card h4{margin:0 0 6px 0;font-size:15px;line-height:1.25;}
     .card p{margin:0;color: var(--muted);font-size:13px;line-height:1.4;}
 
-    /* Panels */
     .grid{display:grid;grid-template-columns:1.1fr .9fr;gap:14px}
     @media (max-width:980px){.grid{grid-template-columns:1fr}}
     .panel{
@@ -386,7 +376,6 @@
     }
     .panel-inner{padding:16px}
 
-    /* Inputs */
     .field{display:grid;gap:6px}
     label{font-size:12px;color:var(--muted)}
     input,select{
@@ -405,7 +394,6 @@
     .two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
     @media (max-width:520px){.two{grid-template-columns:1fr}}
 
-    /* ===== Episodes grid ===== */
     .season-block{
       border-radius: var(--radius2);
       border: 1px solid var(--border);
@@ -468,10 +456,8 @@
       font-weight: 900;
     }
 
-    /* standard + webkit line clamp */
     .ep-title,.yt-title{
       line-height: 1.35;
-      line-clamp: 2;
       -webkit-line-clamp: 2;
       display: -webkit-box;
       -webkit-box-orient: vertical;
@@ -486,7 +472,6 @@
       background: var(--soft);
     }
 
-    /* ===== Modal ===== */
     .modal{
       position:fixed; inset:0;
       background: rgba(0,0,0,0.72);
@@ -514,7 +499,7 @@
       align-items:center;
       justify-content:space-between;
       gap:12px;
-      padding: 12px 14px;
+      padding: calc(12px + env(safe-area-inset-top)) 14px 12px 14px;
       border-bottom: 1px solid var(--border);
       background: var(--soft);
     }
@@ -538,6 +523,7 @@
       display:grid;
       place-items:center;
       transition:140ms ease;
+      flex: 0 0 auto;
     }
     .iconbtn:hover{background: var(--soft2)}
     .xbtn{
@@ -551,6 +537,8 @@
       display:inline-flex;
       align-items:center;
       gap: 8px;
+      white-space: nowrap;
+      flex: 0 0 auto;
     }
     .xbtn:hover{background:var(--soft2)}
     .xbtn.primary{
@@ -575,9 +563,9 @@
       .modal-body{
         grid-template-columns: 1fr;
       }
+      .modal-title{max-width: 60vw;}
     }
 
-    /* Left column: player + panel */
     .player-wrap{
       background:#fff;
       padding: 12px;
@@ -586,6 +574,7 @@
       flex-direction:column;
       gap: 12px;
       overflow:auto;
+      -webkit-overflow-scrolling: touch;
     }
     @media (max-width: 980px){
       .player-wrap{padding: 10px;}
@@ -614,7 +603,6 @@
       background:#000;
     }
 
-    /* Watch panel */
     .watch-panel{
       border-radius: 18px;
       border: 1px solid var(--border);
@@ -639,6 +627,7 @@
       font-size: 16px;
       line-height: 1.25;
       letter-spacing: .1px;
+      word-break: break-word;
     }
 
     .chips{
@@ -662,7 +651,6 @@
     .chipx .dot{width:8px;height:8px;border-radius:999px;background: var(--accent);}
     .chipx b{color: var(--text); font-weight: 900;}
 
-    /* ✅ action bar fixed: consistent across episodes */
     .actionbar{
       display:flex;
       gap: 10px;
@@ -681,6 +669,11 @@
       gap: 10px;
       flex-wrap:wrap;
       align-items:center;
+    }
+    @media (max-width: 520px){
+      .actionbar{flex-direction:column; align-items:stretch;}
+      .actionbar-left, .actionbar-right{width:100%;}
+      .actionbar-right .abtn{width:100%; justify-content:center;}
     }
 
     .abtn{
@@ -784,7 +777,6 @@
     .info-card b{font-size: 13px;}
     .info-card p{margin:0;color: var(--muted);font-size: 13px;line-height:1.55;}
 
-    /* Right column */
     .side{
       border-left:1px solid var(--border);
       background:#fff;
@@ -843,9 +835,9 @@
       display:grid;
       gap: 10px;
       background:#fff;
+      -webkit-overflow-scrolling: touch;
     }
 
-    /* ✅ FIXED STACK: grid row, no squishing, no “strip thumbnails” */
     .side-item{
       display:grid;
       grid-template-columns: 120px 1fr;
@@ -869,7 +861,7 @@
 
     .side-thumb{
       width: 120px;
-      height: 68px; /* true 16:9 */
+      height: 68px;
       border-radius: 14px;
       overflow:hidden;
       background:#000;
@@ -917,7 +909,6 @@
       text-overflow:ellipsis;
     }
 
-    /* Footer */
     footer{border-top:1px solid var(--border);background:#fff;padding:22px 18px 34px;}
     .footer-inner{
       max-width:var(--max);margin:0 auto;
@@ -931,7 +922,6 @@
     }
     .footer-links a:hover{background:var(--soft2);transform:translateY(-1px)}
 
-    /* Quizzes (kept) */
     .quiz-layout{display:grid;grid-template-columns: 1.25fr 0.75fr;gap: 14px;align-items: start;}
     @media (max-width: 980px){.quiz-layout{grid-template-columns:1fr;}}
     .quiz-hero{border-radius: var(--radius2);border: 1px solid var(--border);background: linear-gradient(180deg, #fff 0%, var(--soft) 100%);box-shadow: var(--shadow2);overflow:hidden;}
@@ -962,12 +952,11 @@
     .toast{display:none;padding: 10px 12px;border-radius: 14px;border: 1px solid var(--border);background:#fff;color: var(--muted);font-size: 13px;}
     .toast.show{display:block;}
 
-    /* Small install banner */
     .install-banner{
       position: fixed;
       left: 14px;
       right: 14px;
-      bottom: 14px;
+      bottom: calc(14px + env(safe-area-inset-bottom));
       z-index: 70;
       display:none;
       border: 1px solid var(--border);
@@ -1001,7 +990,6 @@
 </head>
 
 <body>
-  <!-- TOPBAR -->
   <div class="topbar">
     <div class="topbar-inner">
       <button class="hamburger" id="hamburger" aria-label="Open menu" type="button">
@@ -1032,7 +1020,6 @@
     </div>
   </div>
 
-  <!-- MOBILE DRAWER -->
   <div class="drawer-overlay" id="drawerOverlay" aria-hidden="true"></div>
   <aside class="drawer" id="drawer" aria-label="Mobile menu">
     <div class="drawer-top">
@@ -1057,7 +1044,6 @@
   </aside>
 
   <main class="wrap">
-    <!-- HOME -->
     <section class="page active" id="page-home">
       <div class="hero">
         <div class="hero-inner">
@@ -1110,7 +1096,6 @@
       </div>
     </section>
 
-    <!-- EPISODES -->
     <section class="page" id="page-episodes">
       <div class="section-title">
         <h2>Episodes</h2>
@@ -1153,7 +1138,6 @@
       <div style="margin-top:14px;" id="seasonGrids"></div>
     </section>
 
-    <!-- QUIZZES -->
     <section class="page" id="page-quizzes">
       <div class="section-title">
         <h2>Quizzes</h2>
@@ -1227,7 +1211,6 @@
       </div>
     </section>
 
-    <!-- PARTNERS -->
     <section class="page" id="page-partners">
       <div class="section-title">
         <h2>Our Partners & Sponsors</h2>
@@ -1263,7 +1246,6 @@
     </div>
   </footer>
 
-  <!-- PLAYER MODAL -->
   <div class="modal" id="playerModal" aria-hidden="true">
     <div class="modal-card" role="dialog" aria-modal="true" aria-label="Video player">
       <div class="modal-top">
@@ -1275,7 +1257,6 @@
       </div>
 
       <div class="modal-body">
-        <!-- LEFT -->
         <div class="player-wrap">
           <div class="player-shell">
             <iframe id="playerFrame" class="player" src="" title="YouTube video player"
@@ -1294,7 +1275,6 @@
                 </div>
               </div>
 
-              <!-- ✅ unified action bar -->
               <div class="actionbar">
                 <div class="actionbar-left">
                   <button class="abtn" id="btnPrev" type="button">⬅ Prev</button>
@@ -1330,7 +1310,6 @@
           </div>
         </div>
 
-        <!-- RIGHT -->
         <aside class="side" aria-label="Episode list">
           <div class="side-head">
             <div class="side-head-row">
@@ -1349,7 +1328,6 @@
     </div>
   </div>
 
-  <!-- INSTALL BANNER -->
   <div class="install-banner" id="installBanner" role="dialog" aria-label="Install app prompt">
     <div>
       <b>Install TheYapperz</b>
@@ -1364,14 +1342,14 @@
   <script>
     function getVideoId(url){
       try{
-        const u = new URL(url);
-        if (u.hostname.includes("youtu.be")) return u.pathname.replace("/", "").trim();
-        const v = u.searchParams.get("v");
+        var u = new URL(url);
+        if (u.hostname.indexOf("youtu.be") !== -1) return u.pathname.replace("/", "").trim();
+        var v = u.searchParams.get("v");
         return v ? v.trim() : "";
-      }catch{ return ""; }
+      }catch(e){ return ""; }
     }
 
-    const EPISODES = [
+    var EPISODES = [
       { season: 1, ep: 1, url: "https://www.youtube.com/watch?v=D-8b0r7XdME&pp=0gcJCZEKAYcqIYzv" },
       { season: 1, ep: 2, url: "https://www.youtube.com/watch?v=3vwbjsKl7fw" },
       { season: 1, ep: 3, url: "https://www.youtube.com/watch?v=o1zIXa3nhe8" },
@@ -1391,32 +1369,53 @@
       { season: 2, ep: 17, url: "https://www.youtube.com/watch?v=4MNffNHf5EA" },
       { season: 2, ep: 18, url: "https://www.youtube.com/watch?v=ee7fekMyLJ8" },
       { season: 2, ep: 19, url: "https://www.youtube.com/watch?v=idKUedPiMWg" }
-    ].map(x => ({ ...x, id: getVideoId(x.url), title: "" }));
+    ].map(function(x){
+      return { season: x.season, ep: x.ep, url: x.url, id: getVideoId(x.url), title: "" };
+    });
 
-    const ORDERED = EPISODES.slice().sort((a,b)=> (a.season-b.season) || (a.ep-b.ep));
+    var ORDERED = EPISODES.slice().sort(function(a,b){
+      return (a.season - b.season) || (a.ep - b.ep);
+    });
 
-    // Pages
-    const tabs = document.querySelectorAll(".tab");
-    const pages = {
+    function escapeHtml(str){
+      return String(str)
+        .replaceAll("&","&amp;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;")
+        .replaceAll("'","&#039;");
+    }
+    function ytThumb(id){
+      return "https://i.ytimg.com/vi/" + id + "/hqdefault.jpg";
+    }
+
+    var tabs = document.querySelectorAll(".tab");
+    var pages = {
       home: document.getElementById("page-home"),
       episodes: document.getElementById("page-episodes"),
       quizzes: document.getElementById("page-quizzes"),
       partners: document.getElementById("page-partners")
     };
+
     function setActivePage(key){
-      tabs.forEach(t => t.classList.toggle("active", t.dataset.page === key));
-      Object.keys(pages).forEach(k => pages[k].classList.toggle("active", k === key));
+      tabs.forEach(function(t){ t.classList.toggle("active", t.dataset.page === key); });
+      Object.keys(pages).forEach(function(k){ pages[k].classList.toggle("active", k === key); });
       window.scrollTo({ top: 0, behavior: "smooth" });
       closeDrawer();
     }
-    tabs.forEach(t => t.addEventListener("click", () => setActivePage(t.dataset.page)));
-    document.querySelectorAll("[data-go]").forEach(btn => btn.addEventListener("click", () => setActivePage(btn.dataset.go)));
 
-    // Drawer
-    const hamburger = document.getElementById("hamburger");
-    const drawer = document.getElementById("drawer");
-    const drawerOverlay = document.getElementById("drawerOverlay");
-    const drawerClose = document.getElementById("drawerClose");
+    tabs.forEach(function(t){
+      t.addEventListener("click", function(){ setActivePage(t.dataset.page); });
+    });
+    document.querySelectorAll("[data-go]").forEach(function(btn){
+      btn.addEventListener("click", function(){ setActivePage(btn.dataset.go); });
+    });
+
+    var hamburger = document.getElementById("hamburger");
+    var drawer = document.getElementById("drawer");
+    var drawerOverlay = document.getElementById("drawerOverlay");
+    var drawerClose = document.getElementById("drawerClose");
+
     function openDrawer(){
       drawer.classList.add("open");
       drawerOverlay.classList.add("open");
@@ -1429,133 +1428,138 @@
       drawerOverlay.setAttribute("aria-hidden","true");
       document.body.style.overflow = "";
     }
-    hamburger?.addEventListener("click", openDrawer);
-    drawerClose?.addEventListener("click", closeDrawer);
-    drawerOverlay?.addEventListener("click", closeDrawer);
-    document.querySelectorAll("[data-dpage]").forEach(b => b.addEventListener("click", () => setActivePage(b.dataset.dpage)));
+    if(hamburger) hamburger.addEventListener("click", openDrawer);
+    if(drawerClose) drawerClose.addEventListener("click", closeDrawer);
+    if(drawerOverlay) drawerOverlay.addEventListener("click", closeDrawer);
+    document.querySelectorAll("[data-dpage]").forEach(function(b){
+      b.addEventListener("click", function(){ setActivePage(b.dataset.dpage); });
+    });
 
-    // Modal + refs
-    const playerModal = document.getElementById("playerModal");
-    const playerFrame = document.getElementById("playerFrame");
-    const modalTitle = document.getElementById("modalTitle");
-    const modalClose = document.getElementById("modalClose");
-    const modalOpenYT = document.getElementById("modalOpenYT");
+    var playerModal = document.getElementById("playerModal");
+    var playerFrame = document.getElementById("playerFrame");
+    var modalTitle = document.getElementById("modalTitle");
+    var modalClose = document.getElementById("modalClose");
+    var modalOpenYT = document.getElementById("modalOpenYT");
 
-    const sideList = document.getElementById("sideList");
-    const sideSearch = document.getElementById("sideSearch");
+    var sideList = document.getElementById("sideList");
+    var sideSearch = document.getElementById("sideSearch");
 
-    const watchTitle = document.getElementById("watchTitle");
-    const watchSE = document.getElementById("watchSE");
-    const btnPrev = document.getElementById("btnPrev");
-    const btnNext = document.getElementById("btnNext");
-    const btnShuffle = document.getElementById("btnShuffle");
-    const btnCopy = document.getElementById("btnCopy");
-    const btnYT = document.getElementById("btnYT");
-    const copyToast = document.getElementById("copyToast");
-    const autoSwitch = document.getElementById("autoSwitch");
+    var watchTitle = document.getElementById("watchTitle");
+    var watchSE = document.getElementById("watchSE");
+    var btnPrev = document.getElementById("btnPrev");
+    var btnNext = document.getElementById("btnNext");
+    var btnShuffle = document.getElementById("btnShuffle");
+    var btnCopy = document.getElementById("btnCopy");
+    var btnYT = document.getElementById("btnYT");
+    var copyToast = document.getElementById("copyToast");
+    var autoSwitch = document.getElementById("autoSwitch");
 
-    let currentEpisode = null;
-    let autoplayNext = true;
-
-    function escapeHtml(str){
-      return String(str)
-        .replaceAll("&","&amp;")
-        .replaceAll("<","&lt;")
-        .replaceAll(">","&gt;")
-        .replaceAll('"',"&quot;")
-        .replaceAll("'","&#039;");
-    }
-    function ytThumb(id){ return `https://i.ytimg.com/vi/${id}/hqdefault.jpg`; }
+    var currentEpisode = null;
+    var autoplayNext = true;
 
     function toast2(msg){
       if(!msg) return;
       copyToast.textContent = msg;
       copyToast.classList.add("show");
       window.clearTimeout(toast2._t);
-      toast2._t = window.setTimeout(() => copyToast.classList.remove("show"), 2200);
+      toast2._t = window.setTimeout(function(){
+        copyToast.classList.remove("show");
+      }, 2200);
     }
 
     function getIndex(ep){
-      return ORDERED.findIndex(x => x.season===ep.season && x.ep===ep.ep);
+      return ORDERED.findIndex(function(x){ return x.season===ep.season && x.ep===ep.ep; });
     }
     function getNext(ep){
-      const i = getIndex(ep);
+      var i = getIndex(ep);
       if(i < 0) return null;
       return ORDERED[i+1] || null;
     }
     function getPrev(ep){
-      const i = getIndex(ep);
+      var i = getIndex(ep);
       if(i < 0) return null;
       return ORDERED[i-1] || null;
     }
 
     function setWatchPanel(ep){
-      const title = ep.title || `Season ${ep.season} • Episode ${ep.ep}`;
+      var title = ep.title || ("Season " + ep.season + " • Episode " + ep.ep);
       watchTitle.textContent = title;
-      watchSE.textContent = `S${ep.season} • Ep ${ep.ep}`;
+      watchSE.textContent = "S" + ep.season + " • Ep " + ep.ep;
 
       btnYT.href = ep.url;
       modalOpenYT.href = ep.url;
 
-      const p = getPrev(ep);
-      const n = getNext(ep);
+      var p = getPrev(ep);
+      var n = getNext(ep);
       btnPrev.disabled = !p;
       btnNext.disabled = !n;
 
-      modalTitle.textContent = `Season ${ep.season} • Episode ${ep.ep}${ep.title ? " • " + ep.title : ""}`;
+      modalTitle.textContent = "Season " + ep.season + " • Episode " + ep.ep + (ep.title ? " • " + ep.title : "");
     }
 
     function highlightSelected(epObj){
-      const key = `${epObj.season}-${epObj.ep}`;
-      document.querySelectorAll(".ep-tile").forEach(el => el.classList.toggle("active", el.dataset.key === key));
-      document.querySelectorAll(".side-item").forEach(el => el.classList.toggle("active", el.dataset.key === key));
+      var key = epObj.season + "-" + epObj.ep;
+      document.querySelectorAll(".ep-tile").forEach(function(el){
+        el.classList.toggle("active", el.dataset.key === key);
+      });
+      document.querySelectorAll(".side-item").forEach(function(el){
+        el.classList.toggle("active", el.dataset.key === key);
+      });
     }
 
     function renderSideList(){
-      const q = (sideSearch?.value || "").trim().toLowerCase();
-      const list = ORDERED.filter(ep => {
+      var q = (sideSearch && sideSearch.value ? sideSearch.value : "").trim().toLowerCase();
+      var list = ORDERED.filter(function(ep){
         if(!q) return true;
-        const hay = `season ${ep.season} episode ${ep.ep} ${(ep.title||"")}`.toLowerCase();
-        return hay.includes(q);
+        var hay = ("season " + ep.season + " episode " + ep.ep + " " + (ep.title||"")).toLowerCase();
+        return hay.indexOf(q) !== -1;
       });
 
       sideList.innerHTML = "";
-      list.forEach(item => {
-        const row = document.createElement("div");
+      list.forEach(function(item){
+        var row = document.createElement("div");
         row.className = "side-item";
-        row.dataset.key = `${item.season}-${item.ep}`;
+        row.dataset.key = item.season + "-" + item.ep;
 
-        row.innerHTML = `
-          <div class="side-thumb">
-            <img alt="Thumbnail" src="${ytThumb(item.id)}" loading="lazy"/>
-            <div class="badge-ep">S${item.season} • Ep ${item.ep}</div>
-          </div>
-          <div class="side-meta">
-            <div class="yt-title">${escapeHtml(item.title || "Loading title…")}</div>
-            <div class="side-sub">TheYapperz • Official Episode</div>
-          </div>
-        `;
-        row.addEventListener("click", () => openPlayer(item, true));
+        row.innerHTML =
+          '<div class="side-thumb">' +
+            '<img alt="Thumbnail" src="' + ytThumb(item.id) + '" loading="lazy"/>' +
+            '<div class="badge-ep">S' + item.season + ' • Ep ' + item.ep + '</div>' +
+          '</div>' +
+          '<div class="side-meta">' +
+            '<div class="yt-title">' + escapeHtml(item.title || "Loading title…") + '</div>' +
+            '<div class="side-sub">TheYapperz • Official Episode</div>' +
+          '</div>';
+
+        row.addEventListener("click", function(){ openPlayer(item, true); });
         sideList.appendChild(row);
       });
 
       if(currentEpisode){
         highlightSelected(currentEpisode);
-        const active = sideList.querySelector(`.side-item[data-key="${currentEpisode.season}-${currentEpisode.ep}"]`);
+        var selector = '.side-item[data-key="' + currentEpisode.season + '-' + currentEpisode.ep + '"]';
+        var active = sideList.querySelector(selector);
         if(active) active.scrollIntoView({ block: "nearest" });
       }
     }
-    sideSearch?.addEventListener("input", renderSideList);
 
-    function openPlayer(epObj, autoplay=true){
+    if(sideSearch){
+      sideSearch.addEventListener("input", renderSideList);
+    }
+
+    function openPlayer(epObj, autoplay){
+      if(autoplay === undefined) autoplay = true;
       if(!epObj || !epObj.id) return;
-      currentEpisode = epObj;
 
+      currentEpisode = epObj;
       setWatchPanel(epObj);
 
-      const auto = autoplay ? "1" : "0";
-      // Using youtube-nocookie can break some embeds on some setups; standard embed is safest for visuals.
-      playerFrame.src = `https://www.youtube.com/embed/${epObj.id}?autoplay=${auto}&rel=0&modestbranding=1&playsinline=1`;
+      var auto = autoplay ? "1" : "0";
+      playerFrame.src =
+        "https://www.youtube.com/embed/" + epObj.id +
+        "?autoplay=" + auto +
+        "&rel=0&modestbranding=1&playsinline=1";
+
       renderSideList();
       highlightSelected(epObj);
 
@@ -1573,38 +1577,41 @@
       copyToast.classList.remove("show");
     }
 
-    modalClose.addEventListener("click", closePlayer);
-    playerModal.addEventListener("click", (e) => { if(e.target === playerModal) closePlayer(); });
-    window.addEventListener("keydown", (e) => {
+    if(modalClose) modalClose.addEventListener("click", closePlayer);
+    if(playerModal){
+      playerModal.addEventListener("click", function(e){
+        if(e.target === playerModal) closePlayer();
+      });
+    }
+    window.addEventListener("keydown", function(e){
       if(e.key === "Escape" && playerModal.classList.contains("open")) closePlayer();
     });
 
-    // Watch panel buttons
-    btnPrev.addEventListener("click", () => {
+    btnPrev.addEventListener("click", function(){
       if(!currentEpisode) return;
-      const p = getPrev(currentEpisode);
+      var p = getPrev(currentEpisode);
       if(p) openPlayer(p, true);
     });
-    btnNext.addEventListener("click", () => {
+    btnNext.addEventListener("click", function(){
       if(!currentEpisode) return;
-      const n = getNext(currentEpisode);
+      var n = getNext(currentEpisode);
       if(!n) return;
       openPlayer(n, autoplayNext);
     });
-    btnShuffle.addEventListener("click", () => {
-      const pool = ORDERED.slice();
+    btnShuffle.addEventListener("click", function(){
+      var pool = ORDERED.slice();
       if(!pool.length) return;
-      const pick = pool[Math.floor(Math.random() * pool.length)];
+      var pick = pool[Math.floor(Math.random() * pool.length)];
       openPlayer(pick, true);
     });
-    btnCopy.addEventListener("click", async () => {
+    btnCopy.addEventListener("click", async function(){
       if(!currentEpisode) return;
-      const link = currentEpisode.url;
+      var link = currentEpisode.url;
       try{
         await navigator.clipboard.writeText(link);
         toast2("Copied link ✅");
-      }catch{
-        const ta = document.createElement("textarea");
+      }catch(e){
+        var ta = document.createElement("textarea");
         ta.value = link;
         document.body.appendChild(ta);
         ta.select();
@@ -1624,49 +1631,45 @@
       toast2(autoplayNext ? "Autoplay next: ON" : "Autoplay next: OFF");
     }
     autoSwitch.addEventListener("click", toggleAuto);
-    autoSwitch.addEventListener("keydown", (e) => {
+    autoSwitch.addEventListener("keydown", function(e){
       if(e.key === "Enter" || e.key === " ") { e.preventDefault(); toggleAuto(); }
     });
     setAutoUI();
 
-    // Keyboard shortcuts in popup
-    window.addEventListener("keydown", (e) => {
-      const modalOpen = playerModal.classList.contains("open");
+    window.addEventListener("keydown", function(e){
+      var modalOpen = playerModal.classList.contains("open");
       if(!modalOpen) return;
-
       if(e.key === "/"){
         e.preventDefault();
-        sideSearch?.focus();
+        if(sideSearch) sideSearch.focus();
       }
       if(e.key.toLowerCase() === "n") btnNext.click();
       if(e.key.toLowerCase() === "p") btnPrev.click();
       if(e.key.toLowerCase() === "c") btnCopy.click();
     });
 
-    /* Featured */
-    const featuredRow = document.getElementById("featuredRow");
-    const latestFirst = [...EPISODES].reverse();
+    var featuredRow = document.getElementById("featuredRow");
+    var latestFirst = EPISODES.slice().reverse();
+
     function renderFeatured(){
       featuredRow.innerHTML = "";
-      latestFirst.slice(0,3).forEach(ep => {
-        const card = document.createElement("article");
+      latestFirst.slice(0,3).forEach(function(ep){
+        var card = document.createElement("article");
         card.className = "card";
-        card.innerHTML = `
-          <div class="thumb">
-            <img alt="Season ${ep.season} Episode ${ep.ep} thumbnail" src="${ytThumb(ep.id)}" loading="lazy" />
-            <div class="play" aria-hidden="true">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-                <path d="M10 8v8l7-4-7-4Z" fill="#fff"/>
-              </svg>
-            </div>
-          </div>
-          <div class="card-body">
-            <div class="meta"><span>Season ${ep.season}</span><span class="tag">Ep ${ep.ep}</span></div>
-            <h4 class="featuredTitle" data-key="${ep.season}-${ep.ep}">${escapeHtml(ep.title || `Episode ${ep.ep}`)}</h4>
-            <p>Click to play</p>
-          </div>
-        `;
-        card.addEventListener("click", () => {
+        card.innerHTML =
+          '<div class="thumb">' +
+            '<img alt="Season ' + ep.season + ' Episode ' + ep.ep + ' thumbnail" src="' + ytThumb(ep.id) + '" loading="lazy" />' +
+            '<div class="play" aria-hidden="true">' +
+              '<svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M10 8v8l7-4-7-4Z" fill="#fff"/></svg>' +
+            '</div>' +
+          '</div>' +
+          '<div class="card-body">' +
+            '<div class="meta"><span>Season ' + ep.season + '</span><span class="tag">Ep ' + ep.ep + '</span></div>' +
+            '<h4 class="featuredTitle" data-key="' + ep.season + '-' + ep.ep + '">' + escapeHtml(ep.title || ("Episode " + ep.ep)) + '</h4>' +
+            '<p>Click to play</p>' +
+          '</div>';
+
+        card.addEventListener("click", function(){
           setActivePage("episodes");
           selectEpisode(ep, true);
         });
@@ -1675,138 +1678,146 @@
     }
     renderFeatured();
 
-    document.getElementById("btnPlayFeatured").addEventListener("click", () => {
-      const latest = latestFirst[0] || EPISODES[EPISODES.length-1];
+    document.getElementById("btnPlayFeatured").addEventListener("click", function(){
+      var latest = latestFirst[0] || EPISODES[EPISODES.length-1];
       setActivePage("episodes");
       selectEpisode(latest, true);
     });
 
-    /* Episodes page */
-    const seasonFilter = document.getElementById("seasonFilter");
-    const searchInput = document.getElementById("search");
-    const seasonGrids = document.getElementById("seasonGrids");
-    const nowPlaying = document.getElementById("nowPlaying");
-    const btnOpenYT2 = document.getElementById("btnOpenYT");
-    const btnPlay = document.getElementById("btnPlay");
+    var seasonFilter = document.getElementById("seasonFilter");
+    var searchInput = document.getElementById("search");
+    var seasonGrids = document.getElementById("seasonGrids");
+    var nowPlaying = document.getElementById("nowPlaying");
+    var btnOpenYT2 = document.getElementById("btnOpenYT");
+    var btnPlay = document.getElementById("btnPlay");
 
     function selectEpisode(epObj, autoplay){
       currentEpisode = epObj;
       if(nowPlaying){
-        const titleLine = epObj.title ? `<div class="kicker" style="margin-top:6px;">${escapeHtml(epObj.title)}</div>` : "";
-        nowPlaying.innerHTML = `<b>Season ${epObj.season} • Episode ${epObj.ep}</b>` + titleLine;
+        var titleLine = epObj.title ? ('<div class="kicker" style="margin-top:6px;">' + escapeHtml(epObj.title) + '</div>') : "";
+        nowPlaying.innerHTML = "<b>Season " + epObj.season + " • Episode " + epObj.ep + "</b>" + titleLine;
       }
       if(btnOpenYT2) btnOpenYT2.href = epObj.url;
       openPlayer(epObj, autoplay);
     }
 
-    btnPlay.addEventListener("click", () => {
+    btnPlay.addEventListener("click", function(){
       if(!currentEpisode){ alert("Pick an episode first."); return; }
       openPlayer(currentEpisode, true);
     });
 
     function renderSeasonGrids(filteredAll){
       seasonGrids.innerHTML = "";
-      const bySeason = filteredAll.reduce((acc, ep) => {
-        (acc[ep.season] ||= []).push(ep);
+      var bySeason = filteredAll.reduce(function(acc, ep){
+        if(!acc[ep.season]) acc[ep.season] = [];
+        acc[ep.season].push(ep);
         return acc;
       }, {});
-      Object.keys(bySeason).map(Number).sort((a,b)=>a-b).forEach(seasonNum => {
-        const list = bySeason[seasonNum].slice().sort((a,b)=>a.ep-b.ep);
 
-        const block = document.createElement("div");
+      Object.keys(bySeason).map(Number).sort(function(a,b){return a-b;}).forEach(function(seasonNum){
+        var list = bySeason[seasonNum].slice().sort(function(a,b){return a.ep-b.ep;});
+
+        var block = document.createElement("div");
         block.className = "season-block";
         block.style.marginBottom = "14px";
-        block.innerHTML = `
-          <div class="season-head">
-            <h3>Season ${seasonNum}</h3>
-            <div class="count">${list.length} episode(s)</div>
-          </div>
-          <div class="season-grid" id="grid-s${seasonNum}"></div>
-        `;
+        block.innerHTML =
+          '<div class="season-head">' +
+            '<h3>Season ' + seasonNum + '</h3>' +
+            '<div class="count">' + list.length + ' episode(s)</div>' +
+          '</div>' +
+          '<div class="season-grid" id="grid-s' + seasonNum + '"></div>';
+
         seasonGrids.appendChild(block);
 
-        const grid = block.querySelector(`#grid-s${seasonNum}`);
-        list.forEach(ep => {
-          const tile = document.createElement("div");
+        var grid = block.querySelector("#grid-s" + seasonNum);
+        list.forEach(function(ep){
+          var tile = document.createElement("div");
           tile.className = "ep-tile";
-          tile.dataset.key = `${ep.season}-${ep.ep}`;
-          tile.innerHTML = `
-            <div class="t">
-              <img alt="Season ${ep.season} Episode ${ep.ep} thumbnail" src="${ytThumb(ep.id)}" loading="lazy" />
-            </div>
-            <div class="p">
-              <div class="ep-row">
-                <b>Season ${ep.season} • Ep ${ep.ep}</b>
-                <span class="miniTag">S${ep.season}</span>
-              </div>
-              <div class="ep-title" data-key="${ep.season}-${ep.ep}">${escapeHtml(ep.title || "Loading title…")}</div>
-            </div>
-          `;
-          tile.addEventListener("click", () => selectEpisode(ep, true));
+          tile.dataset.key = ep.season + "-" + ep.ep;
+          tile.innerHTML =
+            '<div class="t">' +
+              '<img alt="Season ' + ep.season + ' Episode ' + ep.ep + ' thumbnail" src="' + ytThumb(ep.id) + '" loading="lazy" />' +
+            '</div>' +
+            '<div class="p">' +
+              '<div class="ep-row">' +
+                '<b>Season ' + ep.season + ' • Ep ' + ep.ep + '</b>' +
+                '<span class="miniTag">S' + ep.season + '</span>' +
+              '</div>' +
+              '<div class="ep-title" data-key="' + ep.season + '-' + ep.ep + '">' + escapeHtml(ep.title || "Loading title…") + '</div>' +
+            '</div>';
+
+          tile.addEventListener("click", function(){ selectEpisode(ep, true); });
           grid.appendChild(tile);
         });
       });
     }
 
     function applyFilters(){
-      const sf = seasonFilter.value;
-      const q = searchInput.value.trim().toLowerCase();
+      var sf = seasonFilter.value;
+      var q = searchInput.value.trim().toLowerCase();
 
-      const filtered = EPISODES
+      var filtered = EPISODES
         .slice()
-        .sort((a,b)=> (a.season-b.season) || (a.ep-b.ep))
-        .filter(ep => {
+        .sort(function(a,b){ return (a.season-b.season) || (a.ep-b.ep); })
+        .filter(function(ep){
           if(sf !== "all" && Number(sf) !== ep.season) return false;
           if(!q) return true;
-          const title = (ep.title || "").toLowerCase();
-          const hay = (`season ${ep.season} episode ${ep.ep} ${title}`).toLowerCase();
-          return hay.includes(q);
+          var title = (ep.title || "").toLowerCase();
+          var hay = ("season " + ep.season + " episode " + ep.ep + " " + title).toLowerCase();
+          return hay.indexOf(q) !== -1;
         });
 
       renderSeasonGrids(filtered);
       if(currentEpisode){
-        const still = filtered.some(e => e.season===currentEpisode.season && e.ep===currentEpisode.ep);
+        var still = filtered.some(function(e){ return e.season===currentEpisode.season && e.ep===currentEpisode.ep; });
         if(still) highlightSelected(currentEpisode);
       }
     }
+
     seasonFilter.addEventListener("change", applyFilters);
     searchInput.addEventListener("input", applyFilters);
     applyFilters();
 
-    /* Titles via oEmbed (cached) */
-    const TITLE_CACHE_KEY = "yapperz_title_cache_v6";
+    var TITLE_CACHE_KEY = "yapperz_title_cache_v6";
     function loadTitleCache(){
       try{ return JSON.parse(localStorage.getItem(TITLE_CACHE_KEY) || "{}"); }
-      catch{ return {}; }
+      catch(e){ return {}; }
     }
     function saveTitleCache(cache){
-      try{ localStorage.setItem(TITLE_CACHE_KEY, JSON.stringify(cache)); }catch{}
+      try{ localStorage.setItem(TITLE_CACHE_KEY, JSON.stringify(cache)); }catch(e){}
     }
+
     async function fetchTitleForEpisode(ep){
-      const cache = loadTitleCache();
+      var cache = loadTitleCache();
       if(cache[ep.id]){
         ep.title = cache[ep.id];
         return;
       }
       try{
-        const oembed = `https://www.youtube.com/oembed?url=${encodeURIComponent(ep.url)}&format=json`;
-        const res = await fetch(oembed);
+        var oembed = "https://www.youtube.com/oembed?url=" + encodeURIComponent(ep.url) + "&format=json";
+        var res = await fetch(oembed);
         if(!res.ok) throw new Error("oembed failed");
-        const data = await res.json();
-        const title = (data && data.title) ? String(data.title).trim() : "";
+        var data = await res.json();
+        var title = (data && data.title) ? String(data.title).trim() : "";
         if(title){
           ep.title = title;
           cache[ep.id] = title;
           saveTitleCache(cache);
         }
-      }catch{
+      }catch(e){
         ep.title = ep.title || "";
       }
     }
+
     function updateTitlesInDom(ep){
-      const key = `${ep.season}-${ep.ep}`;
-      document.querySelectorAll(`.ep-title[data-key="${key}"]`).forEach(el => el.textContent = ep.title || "Loading title…");
-      document.querySelectorAll(`.featuredTitle[data-key="${key}"]`).forEach(el => el.textContent = ep.title || `Episode ${ep.ep}`);
+      var key = ep.season + "-" + ep.ep;
+      document.querySelectorAll('.ep-title[data-key="' + key + '"]').forEach(function(el){
+        el.textContent = ep.title || "Loading title…";
+      });
+      document.querySelectorAll('.featuredTitle[data-key="' + key + '"]').forEach(function(el){
+        el.textContent = ep.title || ("Episode " + ep.ep);
+      });
+
       if(playerModal.classList.contains("open")){
         renderSideList();
         if(currentEpisode && currentEpisode.id === ep.id){
@@ -1814,55 +1825,59 @@
         }
       }
     }
+
     async function hydrateEpisodeTitles(){
-      for(const ep of EPISODES){
-        await fetchTitleForEpisode(ep);
-        updateTitlesInDom(ep);
+      for(var i=0;i<EPISODES.length;i++){
+        await fetchTitleForEpisode(EPISODES[i]);
+        updateTitlesInDom(EPISODES[i]);
       }
       renderFeatured();
       applyFilters();
     }
 
-    /* Quizzes */
-    const btnQuizRandom = document.getElementById("btnQuizRandom");
-    const btnQuizShow   = document.getElementById("btnQuizShow");
-    const quizCategory  = document.getElementById("quizCategory");
-    const quizVariation = document.getElementById("quizVariation");
-    const quizQText     = document.getElementById("quizQText");
-    const quizAnswerBox = document.getElementById("quizAnswerBox");
-    const quizAText     = document.getElementById("quizAText");
-    const quizToast     = document.getElementById("quizToast");
-    const chips = document.querySelectorAll(".chip");
+    var btnQuizRandom = document.getElementById("btnQuizRandom");
+    var btnQuizShow   = document.getElementById("btnQuizShow");
+    var quizCategory  = document.getElementById("quizCategory");
+    var quizVariation = document.getElementById("quizVariation");
+    var quizQText     = document.getElementById("quizQText");
+    var quizAnswerBox = document.getElementById("quizAnswerBox");
+    var quizAText     = document.getElementById("quizAText");
+    var quizToast     = document.getElementById("quizToast");
+    var chips = document.querySelectorAll(".chip");
 
-    let QUIZZES = [];
-    let currentQuiz = null;
-    let activeCategory = "all";
+    var QUIZZES = [];
+    var currentQuiz = null;
+    var activeCategory = "all";
 
     function toast(msg){
       if(!msg) return;
       quizToast.textContent = msg;
       quizToast.classList.add("show");
       window.clearTimeout(toast._t);
-      toast._t = window.setTimeout(() => quizToast.classList.remove("show"), 2200);
+      toast._t = window.setTimeout(function(){
+        quizToast.classList.remove("show");
+      }, 2200);
     }
 
     async function loadQuizzes(){
       try{
-        const res = await fetch("quizzes.json", { cache: "no-store" });
+        var res = await fetch("quizzes.json", { cache: "no-store" });
         if(!res.ok) throw new Error("bad status");
-        const data = await res.json();
-        const list = Array.isArray(data) ? data : (Array.isArray(data?.quizzes) ? data.quizzes : null);
+        var data = await res.json();
+        var list = Array.isArray(data) ? data : (Array.isArray(data && data.quizzes) ? data.quizzes : null);
         if(!list || !list.length) throw new Error("empty");
 
         QUIZZES = list
-          .filter(x => x && typeof x.question === "string" && typeof x.answer === "string")
-          .map(x => ({
-            question: x.question.trim(),
-            answer: x.answer.trim(),
-            category: (x.category || "general").toString().trim().toLowerCase(),
-            variation: Number.isFinite(Number(x.variation)) ? Number(x.variation) : Math.floor(Math.random()*900)+100
-          }));
-      }catch{
+          .filter(function(x){ return x && typeof x.question === "string" && typeof x.answer === "string"; })
+          .map(function(x){
+            return {
+              question: x.question.trim(),
+              answer: x.answer.trim(),
+              category: (x.category || "general").toString().trim().toLowerCase(),
+              variation: Number.isFinite(Number(x.variation)) ? Number(x.variation) : (Math.floor(Math.random()*900)+100)
+            };
+          });
+      }catch(e){
         QUIZZES = [];
       }
     }
@@ -1870,18 +1885,18 @@
     function poolForCategory(cat){
       if(!QUIZZES.length) return [];
       if(!cat || cat === "all") return QUIZZES.slice();
-      return QUIZZES.filter(q => q.category === cat);
+      return QUIZZES.filter(function(q){ return q.category === cat; });
     }
 
     function pickRandomQuiz(){
-      const pool = poolForCategory(activeCategory);
+      var pool = poolForCategory(activeCategory);
       if(!pool.length) return null;
       return pool[Math.floor(Math.random() * pool.length)];
     }
 
     function renderQuiz(q){
       currentQuiz = q;
-      quizCategory.textContent = (activeCategory === "all" ? "All" : activeCategory.charAt(0).toUpperCase() + activeCategory.slice(1));
+      quizCategory.textContent = (activeCategory === "all" ? "All" : (activeCategory.charAt(0).toUpperCase() + activeCategory.slice(1)));
       quizVariation.textContent = String(q.variation);
       quizQText.textContent = q.question;
 
@@ -1890,24 +1905,24 @@
       btnQuizShow.disabled = false;
     }
 
-    btnQuizRandom.addEventListener("click", () => {
-      const q = pickRandomQuiz();
+    btnQuizRandom.addEventListener("click", function(){
+      var q = pickRandomQuiz();
       if(!q){ toast("No questions yet. Add more in quizzes.json."); return; }
       renderQuiz(q);
     });
 
-    btnQuizShow.addEventListener("click", () => {
+    btnQuizShow.addEventListener("click", function(){
       if(!currentQuiz) return;
       quizAText.textContent = currentQuiz.answer;
       quizAnswerBox.classList.add("show");
     });
 
-    chips.forEach(ch => {
-      ch.addEventListener("click", () => {
-        chips.forEach(x => x.classList.toggle("active", x === ch));
+    chips.forEach(function(ch){
+      ch.addEventListener("click", function(){
+        chips.forEach(function(x){ x.classList.toggle("active", x === ch); });
         activeCategory = ch.dataset.quizcat || "all";
 
-        quizCategory.textContent = (activeCategory === "all" ? "All" : activeCategory.charAt(0).toUpperCase() + activeCategory.slice(1));
+        quizCategory.textContent = (activeCategory === "all" ? "All" : (activeCategory.charAt(0).toUpperCase() + activeCategory.slice(1)));
 
         currentQuiz = null;
         quizVariation.textContent = "—";
@@ -1918,12 +1933,10 @@
       });
     });
 
-    /* Footer year */
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    /* PWA-ish: inject manifest (best effort) */
     (function injectManifest(){
-      const manifest = {
+      var manifest = {
         name: "TheYapperz",
         short_name: "TheYapperz",
         start_url: "./",
@@ -1936,39 +1949,41 @@
         ]
       };
       try{
-        const blob = new Blob([JSON.stringify(manifest)], { type: "application/manifest+json" });
-        const url = URL.createObjectURL(blob);
-        const link = document.createElement("link");
+        var blob = new Blob([JSON.stringify(manifest)], { type: "application/manifest+json" });
+        var url = URL.createObjectURL(blob);
+        var link = document.createElement("link");
         link.rel = "manifest";
         link.href = url;
         document.head.appendChild(link);
-      }catch{}
+      }catch(e){}
     })();
 
-    /* Install prompt (supported browsers) */
-    let deferredPrompt = null;
-    const installBanner = document.getElementById("installBanner");
-    const installNow = document.getElementById("installNow");
-    const installLater = document.getElementById("installLater");
+    var deferredPrompt = null;
+    var installBanner = document.getElementById("installBanner");
+    var installNow = document.getElementById("installNow");
+    var installLater = document.getElementById("installLater");
 
-    window.addEventListener("beforeinstallprompt", (e) => {
+    window.addEventListener("beforeinstallprompt", function(e){
       e.preventDefault();
       deferredPrompt = e;
       installBanner.classList.add("open");
     });
 
-    installLater?.addEventListener("click", () => installBanner.classList.remove("open"));
-    installNow?.addEventListener("click", async () => {
+    if(installLater) installLater.addEventListener("click", function(){
+      installBanner.classList.remove("open");
+    });
+
+    if(installNow) installNow.addEventListener("click", async function(){
       if(!deferredPrompt) return;
       deferredPrompt.prompt();
-      try{ await deferredPrompt.userChoice; }catch{}
+      try{ await deferredPrompt.userChoice; }catch(e){}
       deferredPrompt = null;
       installBanner.classList.remove("open");
     });
 
-    /* Start */
     loadQuizzes();
     hydrateEpisodeTitles();
   </script>
 </body>
 </html>
+
